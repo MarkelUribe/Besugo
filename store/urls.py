@@ -9,4 +9,6 @@ urlpatterns = [
     path('platerak/', views.platerak, name='platerak'),
     path('mariscadas/', views.mariscadas, name='mariscadas'),
     path('bebidas/', views.bebidas, name='bebidas'),
+    path('register/', views.register, name='register'),
+    path('register/createuser/', views.createuser, name='createuser'),
 ]
