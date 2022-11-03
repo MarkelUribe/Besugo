@@ -1,6 +1,6 @@
 from django.db import models
 from django.forms import DateField
-
+from django.contrib.auth.models import User
 
 
 class Erabiltzailea(models.Model):
@@ -12,9 +12,8 @@ class Erabiltzailea(models.Model):
     )
 
     izena = models.CharField(max_length=30)
-    email = models.CharField(max_length=30)
-    pasahitza = models.CharField(max_length=30)
-    mota = models.IntegerField(choices = ERABILTZAILE_MOTA)
+    mota = models.IntegerField(choices = ERABILTZAILE_MOTA, default=1)
+    erabitlzailea_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
 class Produktua(models.Model):
 
