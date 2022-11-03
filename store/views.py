@@ -2,10 +2,13 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.template import loader
 from .models import *
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 def index(request):
     template = loader.get_template('index.html')
@@ -75,3 +78,18 @@ def createuser(request):
             return HttpResponseRedirect(reverse('index'))
         else:
             return redirect("/register")
+          
+@csrf_exempt
+def hasisaioa(request):
+  if request.method == 'POST':
+    username = request.POST['izena']
+    password = request.POST['pass']
+    user = authenticate(request, username = username, password = password)
+    if user is not None:
+      if user.is_active:
+        login(request, user)
+        messages.success(request, f' welcome {username} !!')
+        return redirect('index')
+    else:
+      messages.info(request, f'account done not exit plz sign in')
+  redirect('login')

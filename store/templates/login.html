@@ -64,44 +64,20 @@
                 
                     <div class="bg-white text-center p-5" id="formdiv">
                         
-                        <form id="log">
-                            <fieldset id="radio">
-                                <legend>Tipo de Usuario</legend>
-                                <label>
-                                    <input type="radio" name="color" value="azul" id="usu"> Usuario
-                                </label>
-                                <label>
-                                    <input type="radio" name="color" value="negro" id="admin"> Administrador
-                                </label>
-                                <label>
-                                    <input type="radio" name="color" value="amarillo" id="rep"> Repartidor
-                                </label>
-                            </fieldset><br><br>
-                            <div class="row g-3">
+                        <form id="log" method="POST" action="/hasisaioa/">
+                            
+                            <legend>Hasi saioa</legend>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Your Name" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    <input type="email" class="form-control bg-light border-0" placeholder="Your Email" style="height: 55px;">
-                                </div>
-                                <div class="col-12 col-sm-6">
-                                    
-                                </div>
-                          
-                                <div class="col-12">
-                                    <input type="password" class="form-control bg-light border-0" placeholder="Your Password" style="height: 50px;" >
+                                    <input type="text" class="form-control bg-light border-0" placeholder="Izena" name="izena" style="height: 55px;">
                                 </div>
                                 <div class="col-12">
-                                    <input type="password" class="form-control bg-light border-0" placeholder="Confirm Password" style="height: 50px;" >
+                                    <input type="password" class="form-control bg-light border-0" placeholder="Your Password" name="pass" style="height: 50px;" >
                                 </div>
                                 <div class="col-12">
-                                   
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Sartu</button>
                                 </div>
-                                <div class="col-12">
-                                    <button class="btn btn-primary w-100 py-3" type="submit">Submit Request</button>
-                                </div>
-                            </div>
                         </form>
+                        <h2><a href="/register/">Erabiltzaile berri bat sortu</a></h2>
                         
                     </div><br><br>
                     <div>
