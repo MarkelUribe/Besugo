@@ -7,6 +7,7 @@ from django.contrib.auth.hashers import make_password, check_password
 from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 
+
 def index(request):
     template = loader.get_template('index.html')
     return HttpResponse(template.render())
@@ -17,18 +18,6 @@ def login(request):
 
 def carro(request):
     template = loader.get_template('carro.html')
-    return HttpResponse(template.render())
-
-def platerak(request):
-    template = loader.get_template('platerak.html')
-    return HttpResponse(template.render())
-
-def mariscadas(request):
-    template = loader.get_template('mariscadas.html')
-    return HttpResponse(template.render())
-
-def bebidas(request):
-    template = loader.get_template('bebidas.html')
     return HttpResponse(template.render())
 
 def register(request):
@@ -51,3 +40,29 @@ def createuser(request):
             return HttpResponseRedirect(reverse('index'))
         else:
             return redirect("/register")
+
+
+def platerak(request):
+  myprodu = Produktua.objects.all().values()
+  template = loader.get_template('platerak.html')
+  context = {
+    'myprodu': myprodu,
+  }
+  return HttpResponse(template.render(context, request))
+
+def bebidas(request):
+  myprodu = Produktua.objects.all().values()
+  template = loader.get_template('bebidas.html')
+  context = {
+    'myprodu': myprodu,
+  }
+  return HttpResponse(template.render(context, request))
+
+def mariscadas(request):
+  myprodu = Produktua.objects.all().values()
+  template = loader.get_template('mariscadas.html')
+  context = {
+    'myprodu': myprodu,
+  }
+  return HttpResponse(template.render(context, request))
+

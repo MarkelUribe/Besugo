@@ -28,6 +28,8 @@ class Produktua(models.Model):
     prezioa = models.FloatField()
     stock = models.FloatField()
     mota = models.IntegerField(choices = PRODUKTU_MOTA)
+    foto = models.CharField(max_length=255,default='null.jpg')
+
 
 class Eskaera(models.Model):
 

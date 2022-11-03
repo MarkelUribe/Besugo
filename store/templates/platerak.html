@@ -76,7 +76,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
           <div class="navbar-nav ms-auto py-0">
             <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
-            <a href="{% url 'login' %}" class="nav-item nav-link active">Login</a>
+            <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
             <a href="{% url 'carro' %}" class="nav-item nav-link">carro</a>
           </div>
         </div>
@@ -96,7 +96,11 @@
                   ><innertab
                     style=""
                     class="tab_content tab_position_0 tab_level_0 marker"
-                    ><span class="sectionname">PLATOS</span></innertab
+                    ><span
+                      class="sectionname"
+                      style="color: var(--dark); font-size: 30px"
+                      >PLATOS</span
+                    ></innertab
                   ></a
                 >
               </li>
@@ -108,147 +112,74 @@
                   ><innertab
                     style=""
                     class="tab_content tab_position_1 tab_level_0"
-                    ><span class="sectionname">MARISCADAS</span></innertab
+                    ><span
+                      class="sectionname"
+                      style="color: var(--primary); font-size: 30px"
+                      >MARISCADAS</span
+                    ></innertab
                   ></a
                 >
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="{% url 'bebidas' %}"
-                  title="BEBIDAS"
+                <a class="nav-link" href="{% url 'bebidas' %}" title="BEBIDAS"
                   ><innertab
                     style=""
                     class="tab_content tab_position_1 tab_level_0"
-                    ><span class="sectionname">BEBIDAS</span></innertab
+                    ><span
+                      class="sectionname"
+                      style="color: var(--primary); font-size: 30px"
+                      >BEBIDAS</span
+                    ></innertab
                   ></a
                 >
               </li>
             </ul>
-            <div class="content-section">
-              <ul class="topics">
-                <li
-                  id="section-0"
-                  class="section main clearfix"
-                  role="region"
-                  aria-labelledby="sectionid-3832-title"
-                  data-sectionid="0"
-                >
-                  <div class="left side"></div>
-                  <div class="right side">
-                    <img
-                      class="icon spacer"
-                      width="1"
-                      height="1"
-                      alt=""
-                      aria-hidden="true"
-                      src="https://elearning20.hezkuntza.net/012053/theme/image.php/boostpersonal/core/1657879178/spacer"
-                    />
-                  </div>
-                  <div class="content">
-                    <h3
-                      id="sectionid-3832-title"
-                      class="sectionname accesshide"
+            <div id="platdiv">
+              <div
+                id="menuPlat"
+                style="
+                  margin-left: 80px;
+                  overflow: scroll;
+                  width: 1600px;
+                  height: 690px;
+                  padding-left: 20px;
+                "
+              >
+                <table style="height: 680px">
+                  {% for x in myprodu %} {% if x.mota == 1 %}
+                  <tr style="font-size: 30px; font-family: Arial">
+                    <td
+                      style="
+                        font-family: Arial;
+                        font-size: 30px;
+                        color: var(--dark);
+                      "
                     >
-                      <span
-                        ><a
-                          href="https://elearning20.hezkuntza.net/012053/course/view.php?id=282&amp;section=0"
-                          >General</a
-                        ></span
+                      {{ x.izena }}<br />
+                      <p style="font-size: 24px">{{ x.deskribapena }}</p>
+                      <p></p>
+                    </td>
+                    <td style="font-family: besugo; color: var(--dark)">
+                      {{ x.prezioa}}€
+                    </td>
+                    <td>
+                      <button
+                        id="gehitu"
+                        style="
+                          margin-left: 820px;
+                          font-family: besugo;
+                          color: var(--dark);
+                          font-family: 'besugo';
+                          background: var(--primary);
+                          border-color: var(--secondary);
+                        "
                       >
-                    </h3>
-                    <div class="section_availability"></div>
-                    <div class="summary"></div>
-                    <ul class="section img-text">
-                      <li
-                        class="activity label modtype_label"
-                        id="module-24760"
-                      >
-                        <div>
-                          <div class="mod-indent-outer w-100">
-                            <div class="mod-indent"></div>
-                            <div>
-                              <div class="contentwithoutlink">
-                                <div class="no-overflow">
-                                  <div class="no-overflow">
-                                    <h1><strong>2022_2023</strong></h1>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li
-                        class="activity forum modtype_forum"
-                        id="module-23787"
-                      >
-                        <div>
-                          <div class="mod-indent-outer w-100">
-                            <div class="mod-indent"></div>
-                            <div>
-                              <div class="activityinstance">
-                                <a
-                                  class="aalink"
-                                  onclick=""
-                                  href="https://elearning20.hezkuntza.net/012053/mod/forum/view.php?id=23787"
-                                  ><img
-                                    src="https://elearning20.hezkuntza.net/012053/theme/image.php/boostpersonal/forum/1657879178/icon"
-                                    class="iconlarge activityicon"
-                                    alt=""
-                                    role="presentation"
-                                    aria-hidden="true"
-                                  /><span class="instancename"
-                                    >Avisos<span class="accesshide">
-                                      Foro</span
-                                    ></span
-                                  ></a
-                                >
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                      <li
-                        class="activity forum modtype_forum"
-                        id="module-23789"
-                      >
-                        <div>
-                          <div class="mod-indent-outer w-100">
-                            <div class="mod-indent"></div>
-                            <div>
-                              <div class="activityinstance">
-                                <a
-                                  class="aalink"
-                                  onclick=""
-                                  href="https://elearning20.hezkuntza.net/012053/mod/forum/view.php?id=23789"
-                                  ><img
-                                    src="https://elearning20.hezkuntza.net/012053/theme/image.php/boostpersonal/forum/1657879178/icon"
-                                    class="iconlarge activityicon"
-                                    alt=""
-                                    role="presentation"
-                                    aria-hidden="true"
-                                  /><span class="instancename"
-                                    >Berrien foroa</span
-                                  ></a
-                                >
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </li>
-              </ul>
-              <div class="section-navigation mdl-bottom">
-                <span class="mdl-left"></span
-                ><span class="mdl-right"
-                  ><a
-                    href="https://elearning20.hezkuntza.net/012053/course/view.php?id=282&amp;section=1"
-                    >1. ERRONKA<span class="rarrow">►</span></a
-                  ></span
-                >
+                        Saskira gehitu
+                      </button>
+                    </td>
+                  </tr>
+                  {% endif %} {% endfor %}
+                </table>
               </div>
             </div>
           </div>
@@ -265,7 +196,22 @@
         <div
           class="py-4 px-5 bg-white footer-shape position-relative text-center text-md-end"
         >
-          <img src="../static/img/bsg.png" height="50px" id="bsg" />
+          <button
+            id="btnComprar"
+            style="
+              height: 50px;
+              width: 150px;
+              margin-left: 30px;
+              font-family: besugo;
+              color: var(--secondary);
+              font-family: 'besugo';
+              background: var(--dark);
+              border-color: var(--secondary);
+              font-size: 22px;
+            "
+          >
+            PROCESAR COMPRA
+          </button>
         </div>
       </div>
     </div>
