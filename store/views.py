@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.template import loader
+from .models import Produktua
 
 def index(request):
     template = loader.get_template('index.html')
@@ -24,3 +25,30 @@ def mariscadas(request):
 def bebidas(request):
     template = loader.get_template('bebidas.html')
     return HttpResponse(template.render())
+
+
+def platerak(request):
+  myprodu = Produktua.objects.all().values()
+  template = loader.get_template('platerak.html')
+  context = {
+    'myprodu': myprodu,
+  }
+  return HttpResponse(template.render(context, request))
+
+def bebidas(request):
+  myprodu = Produktua.objects.all().values()
+  template = loader.get_template('bebidas.html')
+  context = {
+    'myprodu': myprodu,
+  }
+  return HttpResponse(template.render(context, request))
+
+def mariscadas(request):
+  myprodu = Produktua.objects.all().values()
+  template = loader.get_template('mariscadas.html')
+  context = {
+    'myprodu': myprodu,
+  }
+  return HttpResponse(template.render(context, request))
+
+
