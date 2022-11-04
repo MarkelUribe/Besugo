@@ -86,10 +86,9 @@ def hasisaioa(request):
     password = request.POST['pass']
     user = authenticate(request, username = username, password = password)
     if user is not None:
-      if user.is_active:
         login(request, user)
-        messages.success(request, f' welcome {username} !!')
-        return redirect('index')
+        messages.info(request, f"You are now logged in as {username}")
+        return redirect('/')
     else:
-      messages.info(request, f'account done not exit plz sign in')
-  redirect('login')
+        messages.error(request, "Invalid username or password.")
+        return redirect('/')

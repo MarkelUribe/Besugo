@@ -36,31 +36,7 @@
 </head>
 
 <body id="login">
-
-    <!-- Navbar Start -->
-    <div class="container-fluid sticky-top bg-dark bg-light-radial shadow-sm px-5 pe-lg-0">
-        <nav class="navbar navbar-expand-lg bg-dark bg-light-radial navbar-dark py-3 py-lg-0">
-            <a href="{% url 'index' %}" class="navbar-brand">
-                <h1 style="font-family: besugo;font: size 4px; color:#FFFFFF;">BESUGO</h1>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav ms-auto py-0">
-                    <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
-                    <a href="{% url 'login' %}" class="nav-item nav-link active">Login</a>
-                    <a href="{% url 'carro' %}" class="nav-item nav-link">carro</a>
-                </div>
-            </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
-
-
-    <!-- Appointment Start -->
-
-            
+    {% include "header.html" %} 
                 
                     <div class="bg-white text-center p-5" id="formdiv">
                         
