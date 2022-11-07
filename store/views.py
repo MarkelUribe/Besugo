@@ -73,7 +73,10 @@ def mariscadas(request):
 
 def register(request):
     template = loader.get_template('register.html')
-    return HttpResponse(template.render())
+    context = {
+    'myprodu': myprodu,
+    }
+    return HttpResponse(template.render(context, request))
 
 @csrf_exempt
 def createuser(request):
