@@ -53,36 +53,7 @@
   </head>
 
   <body>
-    <!-- Navbar Start -->
-    <div
-      class="container-fluid sticky-top bg-dark bg-light-radial shadow-sm px-5 pe-lg-0"
-    >
-      <nav
-        class="navbar navbar-expand-lg bg-dark bg-light-radial navbar-dark py-3 py-lg-0"
-      >
-        <a href="index.html" class="navbar-brand">
-          <h1 style="font-family: besugo; font: size 4px; color: #ffffff">
-            BESUGO
-          </h1>
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarCollapse"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <div class="navbar-nav ms-auto py-0">
-            <a href="{% url 'index' %}" class="nav-item nav-link">Home</a>
-            <a href="{% url 'login' %}" class="nav-item nav-link">Login</a>
-            <a href="{% url 'carro' %}" class="nav-item nav-link">carro</a>
-          </div>
-        </div>
-      </nav>
-    </div>
-    <!-- Navbar End -->
+    {% include "header.html" %} 
 
     <section id="region-main" class="has-blocks mb-3" aria-label="Contenido">
       <span class="notifications" id="user-notifications"></span>
@@ -163,26 +134,20 @@
                       <img
                         style="
                           height: 50px;
-                          margin-left: 55px;
+                          margin-left: 180px;
                           margin-top: 10px;
                         "
                         src="../static/img/{{x.foto}}"
                       />
                     </td>
                     <td>
-                      <button
-                        id="gehitu"
-                        style="
-                          margin-left: 830px;
-                          font-family: besugo;
-                          color: var(--dark);
-                          font-family: 'besugo';
-                          background: var(--primary);
-                          border-color: var(--secondary);
-                        "
-                      >
-                        Saskira gehitu
-                      </button>
+                      <button type="submit" id="btn" style="margin-left: 750px; border:none;background:white" > <img src="../static/img/minus.jpg" style="height:40px;width:40px"/></button>
+                    </td>
+                    <td>
+                      <div class="contador">0</div>
+                    </td>
+                    <td>
+                      <button type="submit" id="btn" style="border:none;background:white"> <img src="../static/img/plus.jpg" style="height:40px;width:40px"/></button>
                     </td>
                   </tr>
                   {% endif %} {% endfor %}
@@ -203,22 +168,22 @@
         <div
           class="py-4 px-5 bg-white footer-shape position-relative text-center text-md-end"
         >
-          <button
-            id="btnComprar"
-            style="
-              height: 50px;
-              width: 150px;
-              margin-left: 30px;
-              font-family: besugo;
-              color: var(--secondary);
-              font-family: 'besugo';
-              background: var(--dark);
-              border-color: var(--secondary);
-              font-size: 22px;
-            "
-          >
-            PROCESAR COMPRA
-          </button>
+        <button
+        id="btnComprar"
+        style="
+          height: 50px;
+          width: 160px;
+          margin-left: 30px;
+          font-family: besugo;
+          color: var(--dark);
+          font-family: 'besugo';
+          background: var(--primary);
+          border-color: var(--secondary);
+          font-size: 24px;
+        "
+      >
+        PROCESAR COMPRA
+      </button>
         </div>
       </div>
     </div>

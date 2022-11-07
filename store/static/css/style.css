@@ -294,12 +294,17 @@
 #formdiv{
     width: 500px;
     justify-content: center;
-    margin-left:715px;
+    margin:auto;
     margin-top: 100px;
 }
 
 #login{
     background: var(--dark);
+}
+
+#log div{
+    margin: 15px;
+    width: 100%;
 }
 
 
