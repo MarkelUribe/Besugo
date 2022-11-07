@@ -2,7 +2,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.template import loader
 from .models import *
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as logina, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password, check_password
@@ -13,28 +13,39 @@ from django.contrib.auth.forms import AuthenticationForm
 
 def index(request):
     template = loader.get_template('index.html')
-    return HttpResponse(template.render())
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
 
 def login(request):
     template = loader.get_template('login.html')
-    return HttpResponse(template.render())
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
 
 def carro(request):
     template = loader.get_template('carro.html')
-    return HttpResponse(template.render())
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
 
 def platerak(request):
     template = loader.get_template('platerak.html')
-    return HttpResponse(template.render())
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
 
 def mariscadas(request):
     template = loader.get_template('mariscadas.html')
-    return HttpResponse(template.render())
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
 
 def bebidas(request):
     template = loader.get_template('bebidas.html')
-    return HttpResponse(template.render())
-
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
 
 def platerak(request):
   myprodu = Produktua.objects.all().values()
@@ -73,7 +84,8 @@ def createuser(request):
         confpass = request.POST["confpass"]
         if passw == confpass:
             hasha = make_password(passw)
-            user = User.objects.create_user(username=izena, email=email, password=hasha)
+            user = User(username=izena, email=email, password=hasha)
+            user.save()
             erab = Erabiltzailea(izena=izena,erabitlzailea_id=user)
             erab.save()
             return HttpResponseRedirect(reverse('index'))
@@ -87,7 +99,7 @@ def hasisaioa(request):
     password = request.POST['pass']
     user = authenticate(request, username = username, password = password)
     if user is not None:
-        login(request, user)
+        logina(request, user)
         messages.info(request, f"You are now logged in as {username}")
         return redirect('/')
     else:
@@ -95,6 +107,6 @@ def hasisaioa(request):
         return redirect('/')
      
 
-def logout(request):
+def amaitusaioa(request):
   logout(request)
   return redirect("index")
