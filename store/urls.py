@@ -14,4 +14,6 @@ urlpatterns = [
     path('hasisaioa/', views.hasisaioa, name='hasisaioa'),
     path('amaitusaioa/', views.amaitusaioa, name='amaitusaioa'),
     path('mariscadascarro/', views.mariscadascarro, name='mariscadascarro'),
+    path('platoscarro/', views.platoscarro, name='platoscarro'),
+    path('bebidascarro/', views.bebidascarro, name='bebidascarro'),
 ]

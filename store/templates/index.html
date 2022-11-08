@@ -60,7 +60,11 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
                             <h1 class="display-2 text-uppercase text-white mb-md-4">Platos de la casa, el sabor del mar</h1>
+                            {% if request.user.is_authenticated %}
                             <a href="{% url 'platerak' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Comenzar a pedir</a>
+                            {% else %}
+                            <a href="{% url 'platoscarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Comenzar a pedir</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -69,7 +73,11 @@
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
                             <h1 class="display-2 text-uppercase text-white mb-md-4">Las mejores botellas de vino</h1>
+                            {% if request.user.is_authenticated %}
                             <a href="{% url 'bebidas' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Ver bebidas</a>
+                            {% else %}
+                            <a href="{% url 'bebidascarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Ver bebidas</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
