@@ -61,6 +61,7 @@
         <span id="maincontent"></span>
         <div class="course-content">
           <div class="single-section onetopic">
+            
             <ul class="nav nav-tabs mb-3">
               <li class="nav-item">
                 <a class="nav-link active" title="General"
@@ -105,52 +106,30 @@
                 >
               </li>
             </ul>
+
             <div id="platdiv">
               <div
-                id="menuPlat"
-                style="
-                  margin-left: 80px;
-                  overflow: scroll;
-                  width: 1600px;
-                  height: 690px;
-                  padding-left: 20px;
-                "
+                id="menu"
               >
-                <table style="height: 680px">
+                <table class="menutable">
                   {% for x in myprodu %} {% if x.mota == 1 %}
-                  <tr style="font-size: 30px; font-family: Arial">
-                    <td
-                      style="
-                        font-family: Arial;
-                        font-size: 30px;
-                        color: var(--dark);
-                      "
-                    >
+                  <tr>
+                    <td  class="menuizena">
                       {{ x.izena }}<br />
-                      <p style="font-size: 24px">{{ x.deskribapena }}</p>
+                      <p>{{ x.deskribapena }}</p>
                       <p></p>
                     </td>
-                    <td style="font-family: besugo; color: var(--dark)">
+                    <td class="menuprez">
                       {{ x.prezioa}}€
                     </td>
-                    <td>
+                    <td class="menubotoia">
                       {% if request.user.is_authenticated %}
-                      <button
-                        id="gehitu"
-                        style="
-                          margin-left: 820px;
-                          font-family: besugo;
-                          color: var(--dark);
-                          font-family: 'besugo';
-                          background: var(--primary);
-                          border-color: var(--secondary);
-                        "
-                      >
+                      <button id="gehitu" class="gehitu">
                         Saskira gehitu
                       </button>
                       {% endif %}
                     </td>
-                  </tr>
+                  </tr >
                   {% endif %} {% endfor %}
                 </table>
               </div>
@@ -173,22 +152,11 @@
         {% if request.user.is_authenticated %}
         <button
         id="btnComprar"
-        style="
-          height: 50px;
-          width: 160px;
-          margin-left: 30px;
-          font-family: besugo;
-          color: var(--dark);
-          font-family: 'besugo';
-          background: var(--primary);
-          border-color: var(--secondary);
-          font-size: 24px;
-        "
       >
         PROCESAR COMPRA
       </button>
       {% else %}
-      <img src="../static/img/bsg.png" height="50px" id="bsg" />
+      <img src="../static/img/bsg.png" id="bsg" />
       {% endif %}
           
         </div>
