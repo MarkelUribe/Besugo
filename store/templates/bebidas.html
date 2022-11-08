@@ -134,19 +134,22 @@
                       {{ x.prezioa}}€
                     </td>
                     <td>
-                      <button
-                        id="gehitu"
-                        style="
-                          margin-left: 730px;
-                          font-family: besugo;
-                          color: var(--dark);
-                          font-family: 'besugo';
-                          background: var(--primary);
-                          border-color: var(--secondary);
-                        "
-                      >
-                        Saskira gehitu
-                      </button>
+                    {% if request.user.is_authenticated %}
+                    <button
+                    id="gehitu"
+                    style="
+                      margin-left: 730px;
+                      font-family: besugo;
+                      color: var(--dark);
+                      font-family: 'besugo';
+                      background: var(--primary);
+                      border-color: var(--secondary);
+                    "
+                  >
+                    Saskira gehitu
+                  </button>
+                {% endif %}
+                     
                     </td>
                   </tr>
                   {% endif %} {% endfor %}
@@ -167,6 +170,7 @@
         <div
           class="py-4 px-5 bg-white footer-shape position-relative text-center text-md-end"
         >
+        {% if request.user.is_authenticated %}
         <button
         id="btnComprar"
         style="
@@ -183,6 +187,9 @@
       >
         PROCESAR COMPRA
       </button>
+      {% else %}
+      <img src="../static/img/bsg.png" height="50px" id="bsg" />
+      {% endif %}
         </div>
       </div>
     </div>
