@@ -13,4 +13,5 @@ urlpatterns = [
     path('register/createuser/', views.createuser, name='createuser'),
     path('hasisaioa/', views.hasisaioa, name='hasisaioa'),
     path('amaitusaioa/', views.amaitusaioa, name='amaitusaioa'),
+    path('mariscadascarro/', views.mariscadascarro, name='mariscadascarro'),
 ]

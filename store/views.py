@@ -1,3 +1,5 @@
+from datetime import timezone
+import this
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from django.template import loader
@@ -10,6 +12,7 @@ from django.shortcuts import redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
+from datetime import datetime
 
 def index(request):
     template = loader.get_template('index.html')
@@ -112,3 +115,37 @@ def hasisaioa(request):
 def amaitusaioa(request):
   logout(request)
   return redirect("index")
+
+def mariscadascarro(request):
+  
+  myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
+  myprodu = Produktua.objects.all().values()
+  
+  if Eskaera.objects.filter(erabiltzailea = myerabiltzaile).count() <= 0:
+    now=datetime.now()
+    dia=str(now.day)
+    mes=str(now.month)
+    anio=str(now.year)
+    x = anio + "-" + mes + "-" + dia
+    y = 0
+    j = myerabiltzaile
+
+    eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
+    eskaera.save()
+    print("sortuta")
+    template = loader.get_template('mariscadas.html')
+    context = {
+      'mykarroa': eskaera,
+      'myprodu': myprodu,
+    }
+    return HttpResponse(template.render(context, request))
+  else:
+    print("Ez da sortu")
+    myprodu = Produktua.objects.all().values()
+    template = loader.get_template('mariscadas.html')
+    context = {
+    'myprodu': myprodu,
+    }
+    return HttpResponse(template.render(context, request))
+  
+  
