@@ -63,19 +63,6 @@
           <div class="single-section onetopic">
             <ul class="nav nav-tabs mb-3">
               <li class="nav-item">
-                <a class="nav-link active" title="General"
-                  ><innertab
-                    style=""
-                    class="tab_content tab_position_0 tab_level_0 marker"
-                    ><span
-                      class="sectionname"
-                      style="color: var(--dark); font-size: 30px"
-                      >MARISCADAS</span
-                    ></innertab
-                  ></a
-                >
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="{% url 'platerak' %}" title="PLATOS"
                   ><innertab
                     style=""
@@ -88,6 +75,20 @@
                   ></a
                 >
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" title="General"
+                  ><innertab
+                    style=""
+                    class="tab_content tab_position_0 tab_level_0 marker"
+                    ><span
+                      class="sectionname"
+                      style="color: var(--dark); font-size: 30px"
+                      >MARISCADAS</span
+                    ></innertab
+                  ></a
+                >
+              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'bebidas' %}" title="BEBIDAS"
                   ><innertab
@@ -104,88 +105,53 @@
             </ul>
             <div id="mardiv">
               <div
-                id="menumar"
-                style="
-                  margin-left: 80px;
-                  overflow: scroll;
-                  width: 1600px;
-                  height: 690px;
-                  padding-left: 20px;
-                "
+                id="menu"
               >
-                <table style="height: 680px">
+                <table class="menutable">
                   {% for x in myprodu %} {% if x.mota == 0 %}
-                  <tr style="font-size: 30px; font-family: Arial">
-                    <td
-                      style="
-                        font-family: Arial;
-                        font-size: 30px;
-                        color: var(--dark);
-                      "
-                    >
+                  <tr>
+                    <td class="menuizena">
                       {{ x.izena }}<br />
-                      <p style="font-size: 24px">{{ x.deskribapena }}</p>
+                      <p>{{ x.deskribapena }}</p>
                       <p></p>
                     </td>
-                    <td style="font-family: besugo; color: var(--dark)">
-                      {{ x.prezioa}}€
+                    <td class="menuprez">
+                      <div>
+                        <span>{{ x.prezioa}}€</span>
+                        <img class="tableimg" src="../static/img/{{x.foto}}"/>
+                      </div>
                     </td>
-                    <td>
-                      <img
-                        style="
-                          height: 50px;
-                          margin-left: 180px;
-                          margin-top: 10px;
-                        "
-                        src="../static/img/{{x.foto}}"
-                      />
-                    </td>
-                    
-                    
                       {% if request.user.is_authenticated %}
-                      <td>
+                      <td class="menubotoia">
                         <button
-                          class="kenMariskada"
-                          id="btnMinus{{ x.id }}"
-                          style="
-                            margin-left: 750px;
-                            border: none;
-                            background: white;
-                          "
-                          value="{{ x.id }}"
-                        >
-                          <img
-                            src="../static/img/minus.jpg"
-                            style="height: 40px; width: 40px"
-                          />
-                      </button>
-                      </td>
-                      <td>
+                        class="kenMariskada"
+                        id="btnMinus{{ x.id }}"
+                        value="{{ x.id }}"
+                      >
+                        <img
+                          class="geikenimg"
+                          src="../static/img/minus.jpg"
+                        />
+                    </button>
                       <input
                         type="text"
                         class="contador"
                         id="contador{{ x.id }}"
-                        style="width: 60px; border-color: var(--dark); border-radius: 20%; text-align: center;"
                         value="0"
                       />
-                    </td>
-                    <td>
                       <button
-                        class="gehiMariskada"
-                        id="btnPlus{{ x.id }}"
-                        style="border: none; background: white"
-                        value="{{ x.id }}"
-                      >
-                        <img
-                          src="../static/img/plus.jpg"
-                          style="height: 40px; width: 40px"
-                        />
-                    </button>
+                      class="gehiMariskada"
+                      id="btnPlus{{ x.id }}"
+                      value="{{ x.id }}"
+                    >
+                      <img
+                        class="geikenimg"
+                        src="../static/img/plus.jpg"
+                      />
+                  </button>
                     </td>
                       {% endif %}
                       
-                    
-                    
                   </tr>
                   {% endif %} {% endfor %}
                 </table>
@@ -208,22 +174,12 @@
         {% if request.user.is_authenticated %}
         <button
         id="btnComprar"
-        style="
-          height: 50px;
-          width: 160px;
-          margin-left: 30px;
-          font-family: besugo;
-          color: var(--dark);
-          font-family: 'besugo';
-          background: var(--primary);
-          border-color: var(--secondary);
-          font-size: 24px;
-        "
+        
       >
         PROCESAR COMPRA
       </button>
       {% else %}
-      <img src="../static/img/bsg.png" height="50px" id="bsg" />
+      <img src="../static/img/bsg.png" id="bsg" />
       {% endif %}
         </div>
       </div>

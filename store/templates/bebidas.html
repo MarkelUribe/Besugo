@@ -63,14 +63,14 @@
           <div class="single-section onetopic">
             <ul class="nav nav-tabs mb-3">
               <li class="nav-item">
-                <a class="nav-link active" title="General"
+                <a class="nav-link" href="{% url 'platerak' %}" title="PLATOS"
                   ><innertab
                     style=""
-                    class="tab_content tab_position_0 tab_level_0 marker"
+                    class="tab_content tab_position_1 tab_level_0"
                     ><span
                       class="sectionname"
-                      style="color: var(--dark); font-size: 30px"
-                      >BEBIDAS</span
+                      style="color: var(--primary); font-size: 30px"
+                      >PLATOS</span
                     ></innertab
                   ></a
                 >
@@ -92,64 +92,40 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'platerak' %}" title="PLATOS"
+                <a class="nav-link active" title="General"
                   ><innertab
-                    style=""
-                    class="tab_content tab_position_1 tab_level_0"
+                    class="tab_content tab_position_0 tab_level_0 marker"
                     ><span
                       class="sectionname"
-                      style="color: var(--primary); font-size: 30px"
-                      >PLATOS</span
+                      style="color: var(--dark); font-size: 30px"
+                      >BEBIDAS</span
                     ></innertab
                   ></a
                 >
               </li>
+              
             </ul>
             <div id="platdiv">
               <div
-                id="menuPlat"
-                style="
-                  margin-left: 80px;
-                  overflow: scroll;
-                  width: 1600px;
-                  height: 690px;
-                  padding-left: 20px;
-                "
+                id="menu"
               >
-                <table style="height: 680px">
+                <table class="menutable">
                   {% for x in myprodu %} {% if x.mota == 2 %}
-                  <tr style="font-size: 30px; font-family: Arial">
-                    <td
-                      style="
-                        font-family: Arial;
-                        font-size: 30px;
-                        color: var(--dark);
-                      "
-                    >
+                  <tr>
+                    <td class="menuizena">
                       {{ x.izena }}<br />
-                      <p style="font-size: 24px">{{ x.deskribapena }}</p>
+                      <p>{{ x.deskribapena }}</p>
                       <p></p>
                     </td>
-                    <td style="font-family: besugo; color: var(--dark)">
+                    <td class="menuprez">
                       {{ x.prezioa}}€
                     </td>
-                    <td>
+                    <td class="menubotoia">
                     {% if request.user.is_authenticated %}
-                    <button
-                    id="gehitu"
-                    style="
-                      margin-left: 730px;
-                      font-family: besugo;
-                      color: var(--dark);
-                      font-family: 'besugo';
-                      background: var(--primary);
-                      border-color: var(--secondary);
-                    "
-                  >
+                    <button id="gehitu" class="gehitu">
                     Saskira gehitu
-                  </button>
-                {% endif %}
-                     
+                    </button>
+                    {% endif %}
                     </td>
                   </tr>
                   {% endif %} {% endfor %}
@@ -172,23 +148,11 @@
         >
         {% if request.user.is_authenticated %}
         <button
-        id="btnComprar"
-        style="
-          height: 50px;
-          width: 160px;
-          margin-left: 30px;
-          font-family: besugo;
-          color: var(--dark);
-          font-family: 'besugo';
-          background: var(--primary);
-          border-color: var(--secondary);
-          font-size: 24px;
-        "
-      >
+        id="btnComprar">
         PROCESAR COMPRA
       </button>
       {% else %}
-      <img src="../static/img/bsg.png" height="50px" id="bsg" />
+      <img src="../static/img/bsg.png"id="bsg" />
       {% endif %}
         </div>
       </div>

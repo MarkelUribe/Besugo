@@ -341,3 +341,106 @@ form{
 #menuProd{
     padding-left: 100px;
 }
+
+#menu{
+    margin-left: 50px;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 65vh;
+    padding-left: 20px;
+}
+
+.menutable{
+    height: 70%;
+    width: 100%;
+}
+
+.menutable tr{
+    font-size: 30px; 
+    font-family: Arial;
+    width:auto;
+}
+
+.menutable td{
+    font-family: Arial;
+    font-size: 30px;
+    color: var(--dark);
+}
+
+.menuizena{
+    width: 30%;
+}
+
+.menuprez{
+    font-family: besugo; 
+    color: var(--dark);
+    width: 30%;
+}
+
+.menuprez img{
+    margin-left: 50px;
+}
+
+.menubotoia{
+    width: 30%;
+}
+
+.menutable p{
+    font-size: 24px
+}
+
+.tableimg{
+    height: 50px;
+    margin: 10px;
+}
+
+
+
+.kenMariskada{
+    border: none;
+    background: white;
+}
+
+.geikenimg{
+    height: 40px; 
+    width: 40px;
+}
+
+.contador{
+    width: 60px; 
+    border-color: var(--dark); 
+    border-radius: 20%; 
+    text-align: center;
+}
+
+.gehiMariskada{
+    border: none; 
+    background: white;
+}
+
+#btnComprar{
+    height: 50px;
+    width: 160px;
+    margin: 30px;
+    font-family: besugo;
+    color: var(--dark);
+    font-family: 'besugo';
+    background: var(--primary);
+    border-color: var(--secondary);
+    font-size: 24px;
+}
+
+#bsg{
+    height: 50px;
+}
+
+.gehitu{
+    font-family: besugo;
+    color: var(--dark);
+    font-family: 'besugo';
+    background: var(--primary);
+    border-color: var(--secondary);
+}
+
+
+
