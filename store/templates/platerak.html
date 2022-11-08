@@ -140,28 +140,7 @@
     </section>
 
     <!-- Footer Start -->
-    <div
-      class="container-fluid bg-dark bg-light-radial text-white border-top border-secondary px-0"
-    >
-      <div class="d-flex flex-column flex-md-row justify-content-between">
-        <div class="d-flex justify-content-start mt-4"></div>
-        <div
-          class="py-4 px-5 bg-white footer-shape position-relative text-center text-md-end"
-        >
-         
-        {% if request.user.is_authenticated %}
-        <button
-        id="btnComprar"
-      >
-        PROCESAR COMPRA
-      </button>
-      {% else %}
-      <img src="../static/img/bsg.png" id="bsg" />
-      {% endif %}
-          
-        </div>
-      </div>
-    </div>
+    {% include "menufooter.html" %}
     <!-- Footer End -->
 
     <!-- JavaScript Libraries -->
