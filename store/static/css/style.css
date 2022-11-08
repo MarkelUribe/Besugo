@@ -344,6 +344,7 @@ form{
 
 #menu{
     margin-left: 50px;
+    margin-right: 50px;
     overflow: scroll;
     overflow-x: hidden;
     height: 65vh;
@@ -421,7 +422,6 @@ form{
 #btnComprar{
     height: 50px;
     width: 160px;
-    margin: 30px;
     font-family: besugo;
     color: var(--dark);
     font-family: 'besugo';
@@ -442,5 +442,7 @@ form{
     border-color: var(--secondary);
 }
 
-
-
+.menufooter{
+    position:absolute;
+   bottom:0;
+}
