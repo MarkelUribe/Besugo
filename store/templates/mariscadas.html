@@ -53,7 +53,7 @@
   </head>
 
   <body>
-    {% include "header.html" %} 
+    {% include "header.html" %}
 
     <section id="region-main" class="has-blocks mb-3" aria-label="Contenido">
       <span class="notifications" id="user-notifications"></span>
@@ -88,7 +88,7 @@
                   ></a
                 >
               </li>
-              
+
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'bebidas' %}" title="BEBIDAS"
                   ><innertab
@@ -104,9 +104,7 @@
               </li>
             </ul>
             <div id="mardiv">
-              <div
-                id="menu"
-              >
+              <div id="menu">
                 <table class="menutable">
                   {% for x in myprodu %} {% if x.mota == 0 %}
                   <tr>
@@ -118,40 +116,35 @@
                     <td class="menuprez">
                       <div>
                         <span>{{ x.prezioa}}€</span>
-                        <img class="tableimg" src="../static/img/{{x.foto}}"/>
+                        <img class="tableimg" src="../static/img/{{x.foto}}" />
                       </div>
                     </td>
-                      {% if request.user.is_authenticated %}
-                      <td class="menubotoia">
-                        <button
+                    {% if request.user.is_authenticated %}
+                    <td class="menubotoia">
+                      <button
                         class="kenMariskada"
                         id="btnMinus{{ x.id }}"
                         value="{{ x.id }}"
                       >
-                        <img
-                          class="geikenimg"
-                          src="../static/img/minus.jpg"
-                        />
-                    </button>
+                        <img class="geikenimg" src="../static/img/minus.jpg" />
+                      </button>
+                     
                       <input
-                        type="text"
-                        class="contador"
-                        id="contador{{ x.id }}"
-                        value="0"
-                      />
-                      <button
-                      class="gehiMariskada"
-                      id="btnPlus{{ x.id }}"
-                      value="{{ x.id }}"
-                    >
-                      <img
-                        class="geikenimg"
-                        src="../static/img/plus.jpg"
-                      />
-                  </button>
-                    </td>
-                      {% endif %}
+                      type="text"
+                      class="contador"
+                      id="contador{{ x.id }}"
+                      value="0"
                       
+                    />
+                      <button
+                        class="gehiMariskada"
+                        id="btnPlus{{ x.id }}"
+                        value="{{ x.id }}"
+                      >
+                        <img class="geikenimg" src="../static/img/plus.jpg" />
+                      </button>
+                    </td>
+                    {% endif %}
                   </tr>
                   {% endif %} {% endfor %}
                 </table>
