@@ -122,12 +122,32 @@
                     <td class="menuprez">
                       {{ x.prezioa}}€
                     </td>
+                    {% if request.user.is_authenticated %}
                     <td class="menubotoia">
-                      {% if request.user.is_authenticated %}
-                      <button id="gehitu" class="gehitu">
-                        Saskira gehitu
+                      <button
+                        class="kenMariskada"
+                        id="btnMinus{{ x.id }}"
+                        value="{{ x.id }}"
+                      >
+                        <img class="geikenimg" src="../static/img/minus.jpg" />
                       </button>
-                      {% endif %}
+                     
+                      <input
+                      type="text"
+                      class="contador"
+                      id="contador{{ x.id }}"
+                      value="0"
+                      
+                    />
+                      <button
+                        class="gehiMariskada"
+                        id="btnPlus{{ x.id }}"
+                        value="{{ x.id }}"
+                      >
+                        <img class="geikenimg" src="../static/img/plus.jpg" />
+                      </button>
+                    </td>
+                    {% endif %}
                     </td>
                   </tr >
                   {% endif %} {% endfor %}
@@ -157,5 +177,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="/static/js/besugo.js"></script>
   </body>
 </html>

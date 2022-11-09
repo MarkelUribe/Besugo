@@ -16,4 +16,5 @@ urlpatterns = [
     path('mariscadascarro/', views.mariscadascarro, name='mariscadascarro'),
     path('platoscarro/', views.platoscarro, name='platoscarro'),
     path('bebidascarro/', views.bebidascarro, name='bebidascarro'),
+    path('updatecarro/', views.updatecarro, name='updatecarro'),
 ]
