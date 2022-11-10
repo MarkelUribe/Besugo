@@ -298,5 +298,3 @@ def totalaitzuli(request, myeskaera, myprodu, msg):
     
     
     return JsonResponse([{'stock':myprodu.stock, 'total': total, 'mezua': msg, 'eskaerak': lista}], safe=False)
-  
-  
