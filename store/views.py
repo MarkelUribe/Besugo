@@ -230,42 +230,73 @@ def bebidascarro(request):
  
 @csrf_exempt
 def updatecarro(request):
-  idProd = int(request.POST.get('id'))
-  cont = int(request.POST.get('cont'))
-  myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
-  myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile)
-  myprodu = Produktua.objects.get(id=idProd)
+    idProd = int(request.POST.get('id'))
+    cont = int(request.POST.get('cont'))
+    funtz = request.POST.get('funtz')
+    myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
+    myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile)
+    myprodu = Produktua.objects.get(id=idProd)
 
-    
-  print("updatecarro funtziao")
-  if cont<myprodu.stock:    
-    print("stocka dago")
-    if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
-     eskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
-     eskaeralerroa.save()
-     myprodu.stock -= 1
-     myprodu.save()
-     return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
+        
+    print("updatecarro funtziao")
+    if funtz == 'gei':
+        if cont<myprodu.stock:    
+            print("stocka dago")
+            if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
+                eskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
+                eskaeralerroa.save()
+                myprodu.stock -= 1
+                myprodu.save()
+                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
 
-    else:
-     myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
-     myeskaeralerroa.kopurua=cont
-     myeskaeralerroa.save()
-     myprodu.stock -= 1
-     myprodu.save()
-     print("eguneratu da kop: "+str(cont))
-     return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
+            else:
+                myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
+                myeskaeralerroa.kopurua=cont
+                myeskaeralerroa.save()
+                myprodu.stock -= 1
+                myprodu.save()
+                print("eguneratu da kop: "+str(cont))
+                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
 
-  else:
-    return totalaitzuli(request, myeskaera, myprodu, "Ez dago stock-ik")
-    
+        else:
+            return totalaitzuli(request, myeskaera, myprodu, "Ez dago stock-ik")
+
+    elif funtz == 'ken':
+        if cont-1<myprodu.stock:    
+            print("stocka dago")
+            if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
+                eskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
+                eskaeralerroa.save()
+                myprodu.stock -= 1
+                myprodu.save()
+                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
+
+            else:
+                myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
+                myeskaeralerroa.kopurua=cont
+                myeskaeralerroa.save()
+                myprodu.stock -= 1
+                myprodu.save()
+                print("eguneratu da kop: "+str(cont))
+                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
+
+        else:
+            return totalaitzuli(request, myeskaera, myprodu, "Ez dago stock-ik")
+    elif funtz == 'hasi':
+        return totalaitzuli(request, myeskaera, myprodu, "hasiera")
   
 def totalaitzuli(request, myeskaera, myprodu, msg):
     total = 0
     gureeskaerak = EskaeraLerroa.objects.filter(eskaera= myeskaera)
+
+    
+    lista=[]
     for e in gureeskaerak:
+        lista.append({'produktuaid':e.produktua.id, 'kopurua':e.kopurua})
         total += (float(e.produktua.prezioa) * float(e.kopurua))
-        print(e.kopurua)
-    return JsonResponse([{'stock':myprodu.stock,'total': total, 'mezua': msg, 'eskaerak': json.dumps(gureeskaerak)}], safe=False)
+        
+    
+    
+    return JsonResponse([{'stock':myprodu.stock, 'total': total, 'mezua': msg, 'eskaerak': lista}], safe=False)
   
   
