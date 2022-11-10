@@ -265,8 +265,8 @@ def updatecarro(request):
         if cont-1<myprodu.stock:    
             print("stocka dago")
             if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
-                eskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
-                eskaeralerroa.save()
+                myeskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
+                myeskaeralerroa.save()
                 myprodu.stock -= 1
                 myprodu.save()
                 return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")

@@ -20,7 +20,7 @@
           }
           console.log(data)
         }, error: function(e){
-          alert("errorea: " + e);
+          //alert("errorea: " + e);
           console.log(e);
         }
       });
@@ -42,6 +42,10 @@
             //aukeratutako produktuen kopurua jarri
             for (let i = 0; i < data[0].eskaerak.length; i++) {
               $("#contador"+data[0].eskaerak[i].produktuaid).val(data[0].eskaerak[i].kopurua)
+            }
+            if(data[0].mezua == "Ez dago stock-ik"){
+              alert(data[0].mezua);
+              //$(contador).val("0")
             }
             console.log(data)
           }, error: function(e){
