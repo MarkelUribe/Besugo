@@ -74,7 +74,11 @@
 
         });
     
-
+        $(".contador").on("input", function(){
+            var id = $(this).attr('id');
+            id = id.split("r").pop();
+            ajaxkarritoupdate(id, 'ken');
+        });
 
 
 
