@@ -298,3 +298,57 @@ def totalaitzuli(request, myeskaera, myprodu, msg):
     
     
     return JsonResponse([{'stock':myprodu.stock, 'total': total, 'mezua': msg, 'eskaerak': lista}], safe=False)
+
+
+def mariscadascarro(request):
+
+    myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
+    myprodu = Produktua.objects.all().values()
+
+    if Eskaera.objects.filter(erabiltzailea=myerabiltzaile).count() <= 0:
+        now = datetime.now()
+        dia = str(now.day)
+        mes = str(now.month)
+        anio = str(now.year)
+        x = anio + "-" + mes + "-" + dia
+        y = 0
+        j = myerabiltzaile
+
+        eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
+        eskaera.save()
+        print("sortuta")
+        template = loader.get_template('mariscadas.html')
+        context = {
+            'mykarroa': eskaera,
+            'myprodu': myprodu,
+        }
+        return HttpResponse(template.render(context, request))
+    else:
+        print("Ez da sortu")
+        myprodu = Produktua.objects.all().values()
+        template = loader.get_template('mariscadas.html')
+        context = {
+            'myprodu': myprodu,
+        }
+        return HttpResponse(template.render(context, request))
+    
+def carro(request):
+    myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
+    myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile)
+    eskaeralerroak = EskaeraLerroa.objects.filter(eskaera=myeskaera)
+    
+    itzuli = []
+    for i in eskaeralerroak:
+        produktua = Produktua.objects.get(id = i.produktua.id)
+        
+        itzuli.append({'izena': produktua.izena, 'mota': produktua.mota,'kopurua': i.kopurua, 'prezioa': produktua.prezioa, 'id': produktua.id,})
+    
+    
+    context = {
+            'myprodu': itzuli,
+        }
+    
+    template = loader.get_template('carro.html')
+    
+    return HttpResponse(template.render(context, request))
+    

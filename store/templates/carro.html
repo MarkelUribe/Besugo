@@ -58,50 +58,66 @@
     <!-- Page Header Start -->
     <div
       class="container-fluid page-header"
-      style="height: 150px; background: var(--dark); height: 770px"
+      style="height: 150px; background: var(--dark); height: 865px"
     >
-      <h1 class="display-3 text-uppercase text-white mb-3">Mi carrito</h1>
+      <h1 class="display-3 text-uppercase text-white mb-3" style="font-size:40px">Mi carrito</h1>
       <div
         class="container-fluid page-header"
         style="
-          height: 600px;
-          width: 1000px;
+          height: 750px;
+          width: 1100px;
           background: var(--light);
-          overflow: scroll;
+
         "
       >
-        <table style="height: 680px">
-          <tr style="font-size: 30px; font-family: Arial">
-            <td style="font-family: Arial; font-size: 30px; color: var(--dark)">
-              <p style="font-size: 24px;alig">izena</p>
+    <div
+        style="
+          height: 2000px;
+          width: 925px;
+          background: var(--light);
+          overflow: scroll;
+          margin-top:30px;
+        "
+      >
+        <table>
+          <tr>
+            <h2 style="margin-top:20px;margin-right:550px">PLATOS</h2>
+            </tr>
+          {% for x in myprodu %}
+          {% if x.mota == 1 %}
+          <tr style="font-size: 30px; font-family: Arial; margin-top;50px">
+            <td style="font-family: Arial; font-size: 20px; color: var(--dark)">
+              <p style="font-size: 20px;alig">{{x.izena}}</p>
             </td>
             <td style="font-family: Arial; color: var(--dark)">
-              <p style="font-size: 24px; margin-left: 45px">€</p>
+              <p style="font-size: 20px; margin-left: 15px">{{x.prezioa}}€</p>
             </td>
             <td>
               <button
-                type="submit"
+              class="kenMariskada"
                 id="btn"
-                style="margin-left: 610px; border: none; background: white"
+                value="{{ x.id }}"
+                style="margin-left: 395px; border: none; background: white"
               >
                 <img
                   src="../static/img/minus.jpg"
-                  style="height: 40px; width: 40px"
+                  style="height: 30px; width: 30px"
                 />
               </button>
             </td>
             <td>
-              <div class="contador">0</div>
+              <input type="text" class="contador" id="cont{{ x.id }}" value="{{x.kopurua}}">
             </td>
             <td>
               <button
-                type="submit"
+              class="gehiMariskada"
                 id="btn"
+                value="{{ x.id }}"
                 style="border: none; background: white"
               >
                 <img
                   src="../static/img/plus.jpg"
-                  style="height: 40px; width: 40px"
+                  style="height: 30px; width: 30px"
                 />
               </button>
             </td>
@@ -110,11 +126,90 @@
                 onmouseout="this.src='../static/img/basuracerrada.PNG'" style="height:35px;width:35px;margin-bottom:2px;"/></button>
             </td>
           </tr>
+          {% endif %}
+          {% endfor %}
+        </table><br>
+        <table style="margin-right:450px">
+          <tr>
+            <td>
+          <h2 style="margin-top:20px;margin-right :50px">MARISCADA</h2>
+        </td>
+          <td>
+            <img
+              style="height: 20px;"
+              src="../static/img/editar.jpg"
+              onmouseover="this.src='../static/img/lapiz.png'"
+              onmouseout="this.src='../static/img/editar.jpg'"
+            />
+          </td>
+          </tr>
+          {% for x in myprodu %}
+          {% if x.mota == 0 %}
+          <tr style="font-size: 30px; font-family: Arial; margin-top;50px">
+            <td style="font-family: Arial; font-size: 12px; color: var(--dark)">
+              <p>{{x.izena}}</p>
+            </td>
+            <td style="font-family: Arial; font-size: 12px; color: var(--dark);">
+              <p>({{x.kopurua}})</p>
+            </td>
+            
+          </tr>
+          {% endif %}
+          {% endfor %}
+          
         </table>
+        <table>
+          <tr>
+            <h2 style="margin-top:20px;margin-right:550px">BEBIDAS</h2>
+          </tr>
+          {% for x in myprodu %}
+          {% if x.mota == 2 %}
+          <tr style="font-size: 30px; font-family: Arial; margin-top;50px">
+            <td style="font-family: Arial; font-size: 20px; color: var(--dark)">
+              <p>{{x.izena}}</p>
+            </td>
+            <td style="font-family: Arial; color: var(--dark)">
+              <p style="font-size: 20px; margin-left: 15px">{{x.prezioa}}€</p>
+            </td>
+            <td class="menubotoia">
+              <button
+                class="kenMariskada"
+                id="btnMinus{{ x.id }}"
+                value="{{ x.id }}"
+              >
+                <img class="geikenimg" src="../static/img/minus.jpg" />
+              </button>
+             
+              <input
+              type="text"
+              class="contador"
+              id="contador{{ x.id }}"
+              value="0"
+              
+            />
+              <button
+                class="gehiMariskada"
+                id="btnPlus{{ x.id }}"
+                value="{{ x.id }}"
+              >
+                <img class="geikenimg" src="../static/img/plus.jpg" />
+              </button>
+            </td>
+            <td>
+              <button type="submit" id="basura" style="border:none;background:white"> <img src="../static/img/basuracerrada.PNG" onmouseover="this.src='../static/img/basura.PNG'"
+                onmouseout="this.src='../static/img/basuracerrada.PNG'" style="height:35px;width:35px;margin-bottom:2px;"/></button>
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          
+        </table>
+      </div>
+        
         <div id="mariscadaCarrito">
             
         </div>
-        <div id="abajo">
+        <div id="abajo" style="margin-top:10px">
             <table>
                 <tr>
                     <td style="padding-right:220px">
@@ -134,7 +229,7 @@
                 <td><h5 style="margin-left: 10px">DIRECCION DE ENVIO</h5></td>
                 <td>
                   <img
-                    style="height: 35px; margin-left: 230px"
+                    style="height: 35px; margin-left: 230px; "
                     src="../static/img/editar.jpg"
                     onmouseover="this.src='../static/img/lapiz.png'"
                     onmouseout="this.src='../static/img/editar.jpg'"
@@ -155,7 +250,8 @@
               border-radius: 10px;
               border-color:black;
               align: left;
-              margin-top:5px
+              margin-top:5px;
+              margin-bottom:10px
 
             "
           >
@@ -181,13 +277,14 @@
               id="btnComprar"
               style="
                 height: 80px;
-                width: 200px;
+                width: 210px;
                 font-family: Arial;
                 color: var(--secondary);
                 background: var(--dark);
                 border-color: var(--secondary);
                 font-size: 30px;
-                border-radius:10px
+                border-radius:10px;
+
               "
               class="btn"
             >
@@ -204,21 +301,7 @@
     </div>
     <!-- Page Header Start -->
 
-    <!-- Footer Start -->
-    <div
-      class="container-fluid bg-dark bg-light-radial text-white border-top border-secondary px-0"
-    >
-      <div class="d-flex flex-column flex-md-row justify-content-between">
-        <div class="d-flex justify-content-start mt-4"></div>
-        <div
-          class="py-4 px-5 bg-white footer-shape position-relative text-center text-md-end"
-        >
-          <img src="../static/img/bsg.png" height="50px" id="bsg" />
-        </div>
-      </div>
-    </div>
-    <!-- Footer End -->
-
+    {% block javascript %}
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -232,6 +315,8 @@
     <script src="lib/lightbox/js/lightbox.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/besugo2.js"></script>
+    {% endblock javascript %}
   </body>
 </html>
