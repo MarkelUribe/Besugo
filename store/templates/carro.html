@@ -122,8 +122,8 @@
               </button>
             </td>
             <td>
-              <button type="submit" id="basura" style="border:none;background:white"> <img src="../static/img/basuracerrada.PNG" onmouseover="this.src='../static/img/basura.PNG'"
-                onmouseout="this.src='../static/img/basuracerrada.PNG'" style="height:35px;width:35px;margin-bottom:2px;"/></button>
+              <a class="basura" id="basura{{ x.id }}"  style="border:none;background:white"> <img src="../static/img/basuracerrada.PNG" onmouseover="this.src='../static/img/basura.PNG'"
+                onmouseout="this.src='../static/img/basuracerrada.PNG'" style="height:35px;width:35px;margin-bottom:2px;"/></a>
             </td>
           </tr>
           {% endif %}
@@ -135,15 +135,18 @@
           <h2 style="margin-top:20px;margin-right :50px">MARISCADA</h2>
         </td>
           <td>
+            <a href="{% url 'mariscadascarro' %}">
             <img
               style="height: 20px;"
               src="../static/img/editar.jpg"
               onmouseover="this.src='../static/img/lapiz.png'"
               onmouseout="this.src='../static/img/editar.jpg'"
             />
+          </a>
           </td>
           </tr>
           {% for x in myprodu %}
+          {% if x.kopurua > 0 %}
           {% if x.mota == 0 %}
           <tr style="font-size: 30px; font-family: Arial; margin-top;50px">
             <td style="font-family: Arial; font-size: 12px; color: var(--dark)">
@@ -155,9 +158,10 @@
             
           </tr>
           {% endif %}
+          {% endif %}
           {% endfor %}
           
-        </table>
+        </table><br>
         <table>
           <tr>
             <h2 style="margin-top:20px;margin-right:550px">BEBIDAS</h2>
@@ -171,33 +175,35 @@
             <td style="font-family: Arial; color: var(--dark)">
               <p style="font-size: 20px; margin-left: 15px">{{x.prezioa}}€</p>
             </td>
-            <td class="menubotoia">
-              <button
-                class="kenMariskada"
-                id="btnMinus{{ x.id }}"
-                value="{{ x.id }}"
-              >
-                <img class="geikenimg" src="../static/img/minus.jpg" />
-              </button>
-             
-              <input
-              type="text"
-              class="contador"
-              id="contador{{ x.id }}"
-              value="0"
-              
-            />
-              <button
-                class="gehiMariskada"
-                id="btnPlus{{ x.id }}"
-                value="{{ x.id }}"
-              >
-                <img class="geikenimg" src="../static/img/plus.jpg" />
-              </button>
-            </td>
             <td>
-              <button type="submit" id="basura" style="border:none;background:white"> <img src="../static/img/basuracerrada.PNG" onmouseover="this.src='../static/img/basura.PNG'"
-                onmouseout="this.src='../static/img/basuracerrada.PNG'" style="height:35px;width:35px;margin-bottom:2px;"/></button>
+              <button
+              class="kenMariskada"
+                id="btn"
+                value="{{ x.id }}"
+                style="margin-left: 365px; border: none; background: white"
+              >
+                <img
+                  src="../static/img/minus.jpg"
+                  style="height: 30px; width: 30px"
+                />
+              </button>
+            
+              <input type="text" class="contador" id="cont{{ x.id }}" value="{{x.kopurua}}">
+            
+              <button
+              class="gehiMariskada"
+                id="btn"
+                value="{{ x.id }}"
+                style="border: none; background: white"
+              >
+                <img
+                  src="../static/img/plus.jpg"
+                  style="height: 30px; width: 30px"
+                />
+              </button>
+            
+              <a class="basura" id="basura{{ x.id }}"  style="border:none;background:white"> <img src="../static/img/basuracerrada.PNG" onmouseover="this.src='../static/img/basura.PNG'"
+                onmouseout="this.src='../static/img/basuracerrada.PNG'" style="height:35px;width:35px;margin-bottom:2px;"/></a>
             </td>
           </tr>
           {% endif %}
@@ -212,11 +218,11 @@
         <div id="abajo" style="margin-top:10px">
             <table>
                 <tr>
-                    <td style="padding-right:220px">
+                    <td style="padding-right:120px">
                         <div
             id="direccion"
             style="
-              width: 500px;
+            width: 450px;
               height: 60px;
               border: solid;
               border-color:black;
@@ -226,25 +232,27 @@
           >
             <table>
               <tr>
-                <td><h5 style="margin-left: 10px">DIRECCION DE ENVIO</h5></td>
+                <td>
+                  <h5 style="margin-left: 10px;font-size:18px">DIRECCION DE ENVIO</h5>
+                  <input type="text" id="pago" style="margin-left: 10px;height:20px; border-color:black;border-radius:5px; width:300px"></input>
+                </td>
                 <td>
                   <img
-                    style="height: 35px; margin-left: 230px; "
-                    src="../static/img/editar.jpg"
-                    onmouseover="this.src='../static/img/lapiz.png'"
-                    onmouseout="this.src='../static/img/editar.jpg'"
+                    style="height: 30px; margin-left: 80px; "
+                    src="../static/img/basuracerrada.PNG"
+                    onmouseover="this.src='../static/img/basura.PNG'"
+                    onmouseout="this.src='../static/img/basuracerrada.PNG'"
                   />
                 </td>
               </tr>
             </table>
             <br />
-            <p id="datosEnvio"></p>
           </div>
 
           <div
             id="direccion"
             style="
-              width: 500px;
+              width: 450px;
               height: 60px;
               border: solid;
               border-radius: 10px;
@@ -257,10 +265,12 @@
           >
             <table>
               <tr>
-                <td><h5 style="margin-left: 10px">METODO DE PAGO</h5></td>
+                <td>
+                  <h5 style="margin-left: 10px;font-size:18px">METODO DE PAGO</h5>
+                </td>
                 <td>
                   <img
-                    style="height: 35px; margin-left: 255px"
+                    style="height: 35px; margin-left: 230px"
                     src="../static/img/editar.jpg"
                     onmouseover="this.src='../static/img/lapiz.png'"
                     onmouseout="this.src='../static/img/editar.jpg'"
@@ -272,7 +282,10 @@
             <p id="datosEnvio"></p>
           </div>
                     </td>
+                    <td><h3 id="total" style="margin-right:10px"></h3></td>
                     <td>
+
+                      
                         <button
               id="btnComprar"
               style="
@@ -284,7 +297,6 @@
                 border-color: var(--secondary);
                 font-size: 30px;
                 border-radius:10px;
-
               "
               class="btn"
             >
