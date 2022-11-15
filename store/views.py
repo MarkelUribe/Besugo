@@ -1,5 +1,6 @@
 from datetime import timezone
 import json
+from datetime import date
 import this
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
@@ -387,3 +388,20 @@ def carroenvio(request):
     erab.save()
         
     return carro(request)
+@csrf_exempt
+def ordainketaegin(request):
+    erab = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
+    myeskaera =  Eskaera.objects.get(erabiltzailea=erab)
+    gureeskaerak = EskaeraLerroa.objects.filter(eskaera= myeskaera)
+    
+    myeskaera.egoera = 2
+    myeskaera.save()
+    
+    total = 0
+    lista=[]
+    for e in gureeskaerak:
+        lista.append({'produktua':e.produktua.izena, 'kopurua':e.kopurua, 'prezioa': (float(e.produktua.prezioa) * float(e.kopurua))})
+        total += (float(e.produktua.prezioa) * float(e.kopurua))
+        
+        
+    return JsonResponse([{ 'izena':erab.izena, 'total':total,'eguna':date.today(), 'lista':lista}], safe=False)
