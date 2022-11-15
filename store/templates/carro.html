@@ -268,12 +268,14 @@
                   <h5 style="margin-left: 10px;font-size:18px">METODO DE PAGO</h5>
                 </td>
                 <td>
+                  <a href="{% url 'pago' %}">
                   <img
                     style="height: 35px; margin-left: 230px"
                     src="../static/img/editar.jpg"
                     onmouseover="this.src='../static/img/lapiz.png'"
                     onmouseout="this.src='../static/img/editar.jpg'"
-                  />
+                    />
+                  </a>
                 </td>
               </tr>
             </table>
@@ -287,6 +289,7 @@
                       
                         <button
               id="btnComprar"
+              class="btnComprar"
               style="
                 height: 80px;
                 width: 210px;

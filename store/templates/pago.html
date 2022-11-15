@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>BESUGO -  Metodo de pago</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+
+    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css' %}">
+
+    <!-- Libraries Stylesheet -->
+
+    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}">
+    <link rel="stylesheet" href="{% static 'lib/lightbox/css/lightbox.min.css' %}">
+
+    <!-- Customized Bootstrap Stylesheet -->
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+    <!-- Template Stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+</head>
+
+<body id="login">
+    {% include "header.html" %} 
+                
+                    <div class="bg-white text-center p-5" id="formdiv">
+                        
+                        <form id="log" method="POST" action="/hasisaioa/">
+                            
+                                <div class="col-12 col-sm-6">
+                                    <form>
+
+                                            
+                                        <fieldset>
+                                            <label style="margin-right:150px">
+                                                <input type="radio" class="radiopago" name="radio" value="tarjeta" id="tarjeta" checked="true"> Tarjeta
+                                            </label>
+                                            <label>
+                                                <input type="radio" class="radiopago" name="radio" value="paypal" id="paypal"> PayPal
+                                            </label>
+                                        </fieldset>
+                                </div>
+                                <div class="col-12 ">
+                                    <div id="tarjetadiv">
+                                        <div class="heading" >
+                                            <h3 style="margin-right:50px; color:var(--dark)">Confirm Purchase</h3>
+                                        </div>
+                                        <div class="payment">
+                                            <form>
+                                                <div class="form-group owner" id="owner" style="width:300px">
+                                                    <label for="owner">Owner</label>
+                                                    <input type="text" class="form-control" id="owner">
+                                                </div>
+                                                <div class="form-group" id="card" style="width:300px">
+                                                    <label for="cardNumber" name='creditCradNum'>Card Number</label>
+                                                    <input type="text" class="form-control" id="cardNumber">
+                                                </div>
+                                                <div class="form-group CVV" id="cvv" style="width:300px">
+                                                    <label for="cvv">CVV</label>
+                                                    <input type="text" class="form-control" id="cvv">
+                                                </div>      
+                                                <div class="form-group" id="expiration-date">
+                                                    <label>Expiration Date</label>
+                                                    <select>
+                                                        <option value="01">January</option>
+                                                        <option value="02">February </option>
+                                                        <option value="03">March</option>
+                                                        <option value="04">April</option>
+                                                        <option value="05">May</option>
+                                                        <option value="06">June</option>
+                                                        <option value="07">July</option>
+                                                        <option value="08">August</option>
+                                                        <option value="09">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                    <select style="margin-right:90px">
+                                                        <option value="16" > 2016</option>
+                                                        <option value="17"> 2017</option>
+                                                        <option value="18"> 2018</option>
+                                                        <option value="19"> 2019</option>
+                                                        <option value="20"> 2020</option>
+                                                        <option value="21"> 2021</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                               
+                                </div>
+                                <a href="https://www.paypal.com/signin" >
+                                <button class="" type="submit" id="pay" style="background:var(--dark); color:white;margin-bottom:50px; border-radius:10px;">continuar</button>
+                                </a>
+                                
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" name="sub" type="submit" id="confirmar">confirmar</button>
+                                </div>
+                        </form>
+                        
+                    </div><br><br>
+                    <div>
+                    <center>
+                        <h2 style="font-family:besugo ;color:var(--secondary); font: size 32px;">Disfruta de nuestros repartos a domicilio!</h2>
+                    </center>
+                </div>
+
+
+    {% block javascript %}            
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script src="/static/js/main.js"></script>
+    <script src="/static/js/besugopago.js"></script>
+    {% endblock javascript %}
+</body>
+
+</html>

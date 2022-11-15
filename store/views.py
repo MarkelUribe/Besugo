@@ -369,4 +369,8 @@ def totalajaso(request):
    
    
 
-    
+def pago(request):
+    template = loader.get_template('pago.html')
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
