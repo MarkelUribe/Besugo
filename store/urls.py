@@ -21,4 +21,5 @@ urlpatterns = [
     path('eskaeraezabatu/', views.eskaeraezabatu, name='eskaeraezabatu'),
     path('totalajaso/', views.totalajaso, name='totalajaso'),
     path('pago/', views.pago, name='pago'),
+    path('ordainketaegin/', views.ordainketaegin, name='ordainketaegin'),
 ]
