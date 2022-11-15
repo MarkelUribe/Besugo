@@ -129,7 +129,7 @@ def mariscadascarro(request):
     myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
     myprodu = Produktua.objects.all().values()
 
-    if Eskaera.objects.filter(erabiltzailea=myerabiltzaile).count() <= 0:
+    if Eskaera.objects.filter(erabiltzailea=myerabiltzaile, egoera=0).count() <= 0:
         now = datetime.now()
         dia = str(now.day)
         mes = str(now.month)
@@ -163,7 +163,7 @@ def platoscarro(request):
   myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
   myprodu = Produktua.objects.all().values()
 
-  if Eskaera.objects.filter(erabiltzailea=myerabiltzaile).count() <= 0:
+  if Eskaera.objects.filter(erabiltzailea=myerabiltzaile, egoera=0).count() <= 0:
       now = datetime.now()
       dia = str(now.day)
       mes = str(now.month)
@@ -196,7 +196,7 @@ def bebidascarro(request):
   myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
   myprodu = Produktua.objects.all().values()
 
-  if Eskaera.objects.filter(erabiltzailea=myerabiltzaile).count() <= 0:
+  if Eskaera.objects.filter(erabiltzailea=myerabiltzaile, egoera=0).count() <= 0:
       now = datetime.now()
       dia = str(now.day)
       mes = str(now.month)
@@ -229,7 +229,7 @@ def updatecarro(request):
     cont = int(request.POST.get('cont'))
     funtz = request.POST.get('funtz')
     myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
-    myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile)
+    myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile, egoera=0)
     myprodu = Produktua.objects.get(id=idProd)
 
         
@@ -290,7 +290,7 @@ def mariscadascarro(request):
     myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
     myprodu = Produktua.objects.all().values()
 
-    if Eskaera.objects.filter(erabiltzailea=myerabiltzaile).count() <= 0:
+    if Eskaera.objects.filter(erabiltzailea=myerabiltzaile, egoera=0).count() <= 0:
         now = datetime.now()
         dia = str(now.day)
         mes = str(now.month)
@@ -319,7 +319,21 @@ def mariscadascarro(request):
     
 def carro(request):
     myerabiltzaile = Erabiltzailea.objects.get(erabitlzailea_id=request.user)
-    myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile)
+    
+    if Eskaera.objects.filter(erabiltzailea=myerabiltzaile, egoera=0).count() <= 0:
+      now = datetime.now()
+      dia = str(now.day)
+      mes = str(now.month)
+      anio = str(now.year)
+      x = anio + "-" + mes + "-" + dia
+      y = 0
+      j = myerabiltzaile
+
+      eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
+      eskaera.save()
+      
+        
+    myeskaera = Eskaera.objects.get(erabiltzailea=myerabiltzaile, egoera=0)
     eskaeralerroak = EskaeraLerroa.objects.filter(eskaera=myeskaera)
     
     itzuli = []
@@ -343,7 +357,7 @@ def eskaeraezabatu(request):
     idProd = int(request.POST.get('id'))
     prod = Produktua.objects.get(id=idProd)
     erab = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
-    eskaera = Eskaera.objects.get(erabiltzailea=erab)
+    eskaera = Eskaera.objects.get(erabiltzailea=erab, egoera=0)
     
     eskaeralerroa = EskaeraLerroa.objects.get(eskaera=eskaera, produktua=prod)
     eskaeralerroa.delete()
@@ -354,7 +368,7 @@ def eskaeraezabatu(request):
 def totalajaso(request):
     total = 0
     erab = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
-    myeskaera =  Eskaera.objects.get(erabiltzailea=erab)
+    myeskaera =  Eskaera.objects.get(erabiltzailea=erab, egoera=0)
     gureeskaerak = EskaeraLerroa.objects.filter(eskaera= myeskaera)
     
     lista=[]
@@ -391,7 +405,7 @@ def carroenvio(request):
 @csrf_exempt
 def ordainketaegin(request):
     erab = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
-    myeskaera =  Eskaera.objects.get(erabiltzailea=erab)
+    myeskaera =  Eskaera.objects.get(erabiltzailea=erab, egoera=0)
     gureeskaerak = EskaeraLerroa.objects.filter(eskaera= myeskaera)
     
     myeskaera.egoera = 2
