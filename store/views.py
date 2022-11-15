@@ -30,13 +30,6 @@ def login(request):
     return HttpResponse(template.render(context, request))
 
 
-def carro(request):
-    template = loader.get_template('carro.html')
-    context = {
-    }
-    return HttpResponse(template.render(context, request))
-
-
 def platerak(request):
     template = loader.get_template('platerak.html')
     context = {
@@ -149,6 +142,7 @@ def mariscadascarro(request):
         print("sortuta")
         template = loader.get_template('mariscadas.html')
         context = {
+            'erabiltzailea': myerabiltzaile,
             'mykarroa': eskaera,
             'myprodu': myprodu,
         }
@@ -285,6 +279,7 @@ def totalaitzuli(request, myeskaera, myprodu, msg):
     for e in gureeskaerak:
         lista.append({'produktuaid':e.produktua.id, 'kopurua':e.kopurua})
         total += (float(e.produktua.prezioa) * float(e.kopurua))
+        
     
     return JsonResponse([{'stock':myprodu.stock, 'total': total, 'mezua': msg, 'eskaerak': lista}], safe=False)
 
@@ -335,6 +330,7 @@ def carro(request):
     
     context = {
             'myprodu': itzuli,
+            'helbidea': myerabiltzaile.helbidea,
         }
     
     template = loader.get_template('carro.html')
@@ -365,7 +361,7 @@ def totalajaso(request):
         lista.append({'produktuaid':e.produktua.id, 'kopurua':e.kopurua})
         total += (float(e.produktua.prezioa) * float(e.kopurua))
         
-    return JsonResponse([{'total':total}], safe=False)
+    return JsonResponse([{'total':round(total, 2)}], safe=False)
    
    
 
@@ -374,3 +370,20 @@ def pago(request):
     context = {
     }
     return HttpResponse(template.render(context, request))
+
+def envio(request):
+    template = loader.get_template('envio.html')
+    context = {
+    }
+    return HttpResponse(template.render(context, request))
+
+@csrf_exempt
+def carroenvio(request):
+    herria = request.POST['herria']
+    helbidea = request.POST['helbidea']
+    erab = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
+    
+    erab.helbidea = helbidea +", "+ herria
+    erab.save()
+        
+    return carro(request)

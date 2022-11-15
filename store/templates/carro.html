@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>WEBUILD - Construction Company Website Template Free</title>
+    <title>Besugo carro</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="Free HTML Templates" name="keywords" />
     <meta content="Free HTML Templates" name="description" />
@@ -230,22 +230,21 @@
 
             "
           >
-            <table>
-              <tr>
-                <td>
+            
                   <h5 style="margin-left: 10px;font-size:18px">DIRECCION DE ENVIO</h5>
-                  <input type="text" id="pago" style="margin-left: 10px;height:20px; border-color:black;border-radius:5px; width:300px"></input>
-                </td>
-                <td>
-                  <img
-                    style="height: 30px; margin-left: 80px; "
-                    src="../static/img/basuracerrada.PNG"
-                    onmouseover="this.src='../static/img/basura.PNG'"
-                    onmouseout="this.src='../static/img/basuracerrada.PNG'"
-                  />
-                </td>
-              </tr>
-            </table>
+                  
+                  <p>{{ helbidea }}</p>
+                  
+                
+                  <a href="{% url 'envio' %}">
+                    <img
+                      style="height: 35px; margin-left: 80px"
+                      src="../static/img/editar.jpg"
+                      onmouseover="this.src='../static/img/lapiz.png'"
+                      onmouseout="this.src='../static/img/editar.jpg'"
+                      />
+                    </a>
+             
             <br />
           </div>
 
@@ -263,12 +262,9 @@
 
             "
           >
-            <table>
-              <tr>
-                <td>
+            
                   <h5 style="margin-left: 10px;font-size:18px">METODO DE PAGO</h5>
-                </td>
-                <td>
+               
                   <a href="{% url 'pago' %}">
                   <img
                     style="height: 35px; margin-left: 230px"
@@ -277,9 +273,7 @@
                     onmouseout="this.src='../static/img/editar.jpg'"
                     />
                   </a>
-                </td>
-              </tr>
-            </table>
+                
             <br />
             <p id="datosEnvio"></p>
           </div>

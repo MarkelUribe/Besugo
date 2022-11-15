@@ -14,6 +14,7 @@ class Erabiltzailea(models.Model):
 
     izena = models.CharField(max_length=30)
     mota = models.IntegerField(choices = ERABILTZAILE_MOTA, default=1)
+    helbidea = models.CharField(max_length=100, null=True)
     erabitlzailea_id = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
 class Produktua(models.Model):

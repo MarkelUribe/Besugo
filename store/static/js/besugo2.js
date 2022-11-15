@@ -53,14 +53,6 @@
       });
     }
 
-      $(".btnComprar").click(function (e) {
-        var doc = new jsPDF();
-        doc.text(10, 10, 'Hello world!');
-        doc.save('C:\Users\olivera.unai\Documents\GitHub\Besugo\hello-world.pdf');
-        alert("pdf");
-        //totaljaso();
-  
-      });
 
     $(".gehiMariskada").click(function (e) {
       e.preventDefault();
@@ -121,6 +113,11 @@
       //totaljaso();
   });
 
-
   });
+
+  $("#basu").click(function (e) {
+    e.preventDefault();
+    document.getElementById("#dire").textContent = "";
+  });
+ 
 })(jQuery);
