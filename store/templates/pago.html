@@ -1,143 +1,116 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>BESUGO -  Ordainketa modua</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
-
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
-
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
-
-    <!-- Icon Font Stylesheet -->
-
-    <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css' %}">
-
-    <!-- Libraries Stylesheet -->
-
-    <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
-    <link rel="stylesheet" href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}">
-    <link rel="stylesheet" href="{% static 'lib/lightbox/css/lightbox.min.css' %}">
-
-    <!-- Customized Bootstrap Stylesheet -->
-
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
-
-    <!-- Template Stylesheet -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-</head>
-
-<body id="login">
-    {% include "header.html" %} 
-                
-                    <div class="bg-white text-center p-5" id="formdiv">
-                        
-                        <form id="log">
-                            
-                                <div class="col-12 col-sm-6">
-
-                                            
-                                        <fieldset>
-                                            <label style="margin-right:150px">
-                                                <input type="radio" class="radiopago" name="radio" value="tarjeta" id="tarjeta" checked="true"> Txartela
-                                            </label>
-                                            <label>
-                                                <input type="radio" class="radiopago" name="radio" value="paypal" id="paypal"> PayPal
-                                            </label>
-                                        </fieldset>
-                                </div>
-                                <div class="col-12 ">
-                                    <div id="tarjetadiv">
-                                        <div class="payment">
-                                                <div class="form-group owner" style="width:300px">
-                                                    <label for="owner">Jabea</label>
-                                                    <input type="text" class="form-control" id="owner" value="">
-                                                </div>
-                                                <div class="form-group" id="card" style="width:300px">
-                                                    <label for="cardNumber" name='creditCradNum'>Txartel zenbakia</label>
-                                                    <input type="text" class="form-control" id="cardNumber" value="">
-                                                </div>
-                                                <div class="form-group CVV"  style="width:300px">
-                                                    <label for="cvv">CVV</label>
-                                                    <input type="text" class="form-control" id="cvv" value="">
-                                                </div>      
-                                                <div class="form-group" id="expiration-date">
-                                                    <label>Expiration Date</label>
-                                                    <select>
-                                                        <option value="01">Urtarrila</option>
-                                                        <option value="02">Otsaila </option>
-                                                        <option value="03">Martxoa</option>
-                                                        <option value="04">Apirila</option>
-                                                        <option value="05">Maiatza</option>
-                                                        <option value="06">Ekaina</option>
-                                                        <option value="07">Uzztaila</option>
-                                                        <option value="08">Abuztua</option>
-                                                        <option value="09">Iraila</option>
-                                                        <option value="10">Urria</option>
-                                                        <option value="11">Azaroa</option>
-                                                        <option value="12">Abendua</option>
-                                                    </select>
-                                                    <select style="margin-right:95px">
-                                                        <option value="22" > 2022</option>
-                                                        <option value="23"> 2023</option>
-                                                        <option value="24"> 2024</option>
-                                                        <option value="25"> 2025</option>
-                                                        <option value="26"> 2026</option>
-                                                        <option value="27"> 2027</option>
-                                                        <option value="28"> 2028</option>
-                                                    </select>
-                                                </div>
-                                                
-                                                    
-                                                    
-                                        </div>
-                                        
-                                    </div>
-                                    <a href="https://www.paypal.com/signin" class="" id="pay" style="background:var(--dark); color:white; border-radius:10px;">
-                                        Jarraitu
-                                    </a>
-                                    <div class="col-12" style="width:300px">
-                                        <a class="btn btn-primary w-100 py-3" id="confirmar" >Baieztatu</a>
-                                        
-                                    </div>
-                                </div>
-                        </form>
-                        
-                    </div><br><br>
-                    <div>
-                    <center>
-                        <h2 style="font-family:besugo ;color:var(--secondary); font: size 32px;">Itsasoa zure etxeko atean</h2>
-                    </center>
-                </div>
-
-
-    {% block javascript %}            
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    
-
-
-    <!-- Template Javascript -->
-    <script src="/static/js/main.js"></script>
-    <script src="/static/js/besugopago.js"></script>
-    {% endblock javascript %}
-</body>
-
+   <head>
+      <meta charset="utf-8">
+      <title>BESUGO -  Ordainketa modua</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta content="Free HTML Templates" name="keywords">
+      <meta content="Free HTML Templates" name="description">
+      <!-- Favicon -->
+      <link href="img/favicon.ico" rel="icon">
+      <!-- Google Web Fonts -->
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+      <!-- Icon Font Stylesheet -->
+      <link rel="stylesheet" href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css' %}">
+      <link rel="stylesheet" href="{% static 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css' %}">
+      <!-- Libraries Stylesheet -->
+      <link rel="stylesheet" href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}">
+      <link rel="stylesheet" href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}">
+      <link rel="stylesheet" href="{% static 'lib/lightbox/css/lightbox.min.css' %}">
+      <!-- Customized Bootstrap Stylesheet -->
+      <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+      <!-- Template Stylesheet -->
+      <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+   </head>
+   <body id="login">
+      {% include "header.html" %} 
+      <div class="bg-white text-center p-5" id="formdiv">
+         <form id="log">
+            <div class="col-12 col-sm-6">
+               <fieldset>
+                  <label style="margin-right:150px">
+                  <input type="radio" class="radiopago" name="radio" value="tarjeta" id="tarjeta" checked="true"> Txartela
+                  </label>
+                  <label>
+                  <input type="radio" class="radiopago" name="radio" value="paypal" id="paypal"> PayPal
+                  </label>
+               </fieldset>
+            </div>
+            <div class="col-12 ">
+               <div id="tarjetadiv">
+                  <div class="payment">
+                     <div class="form-group owner" style="width:300px">
+                        <label for="owner">Jabea</label>
+                        <input type="text" class="form-control" id="owner" value="">
+                     </div>
+                     <div class="form-group" id="card" style="width:300px">
+                        <label for="cardNumber" name='creditCradNum'>Txartel zenbakia</label>
+                        <input type="text" class="form-control" id="cardNumber" value="">
+                     </div>
+                     <div class="form-group CVV"  style="width:300px">
+                        <label for="cvv">CVV</label>
+                        <input type="text" class="form-control" id="cvv" value="">
+                     </div>
+                     <div class="form-group" id="expiration-date">
+                        <label>Expiration Date</label>
+                        <select>
+                           <option value="01">Urtarrila</option>
+                           <option value="02">Otsaila </option>
+                           <option value="03">Martxoa</option>
+                           <option value="04">Apirila</option>
+                           <option value="05">Maiatza</option>
+                           <option value="06">Ekaina</option>
+                           <option value="07">Uzztaila</option>
+                           <option value="08">Abuztua</option>
+                           <option value="09">Iraila</option>
+                           <option value="10">Urria</option>
+                           <option value="11">Azaroa</option>
+                           <option value="12">Abendua</option>
+                        </select>
+                        <select style="margin-right:95px">
+                           <option value="22" > 2022</option>
+                           <option value="23"> 2023</option>
+                           <option value="24"> 2024</option>
+                           <option value="25"> 2025</option>
+                           <option value="26"> 2026</option>
+                           <option value="27"> 2027</option>
+                           <option value="28"> 2028</option>
+                        </select>
+                     </div>
+                  </div>
+               </div>
+               <a href="https://www.paypal.com/signin" class="" id="pay" style="background:var(--dark); color:white; border-radius:10px;">
+               Jarraitu
+               </a>
+               <div class="col-12" style="width:300px">
+                  <a class="btn btn-primary w-100 py-3" id="confirmar" >Baieztatu</a>
+               </div>
+            </div>
+         </form>
+      </div>
+      <br><br>
+      <div>
+         <center>
+            <h2 style="font-family:besugo ;color:var(--secondary); font: size 32px;">Itsasoa zure etxeko atean</h2>
+         </center>
+      </div>
+      {% block javascript %}            
+      <!-- JavaScript Libraries -->
+      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+      <script src="lib/easing/easing.min.js"></script>
+      <script src="lib/waypoints/waypoints.min.js"></script>
+      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="lib/tempusdominus/js/moment.min.js"></script>
+      <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+      <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+      <script src="lib/isotope/isotope.pkgd.min.js"></script>
+      <script src="lib/lightbox/js/lightbox.min.js"></script>
+      <!-- Template Javascript -->
+      <script src="/static/js/main.js"></script>
+      <script src="/static/js/besugopago.js"></script>
+      {% endblock javascript %}
+   </body>
 </html>
