@@ -24,4 +24,5 @@ urlpatterns = [
     path('envio/', views.envio, name='envio'),
     path('carroenvio/', views.carroenvio, name='carroenvio'),
     path('ordainketaegin/', views.ordainketaegin, name='ordainketaegin'),
+    path('ordainketamota/', views.ordainketamota, name='ordainketamota'),
 ]

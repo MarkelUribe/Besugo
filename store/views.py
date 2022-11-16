@@ -346,6 +346,7 @@ def carro(request):
     context = {
             'myprodu': itzuli,
             'helbidea': myerabiltzaile.helbidea,
+            'ordainketa': myerabiltzaile.ordainketaMota,
         }
     
     template = loader.get_template('carro.html')
@@ -408,14 +409,34 @@ def ordainketaegin(request):
     myeskaera =  Eskaera.objects.get(erabiltzailea=erab, egoera=0)
     gureeskaerak = EskaeraLerroa.objects.filter(eskaera= myeskaera)
     
-    myeskaera.egoera = 2
-    myeskaera.save()
+    
+    if erab.ordainketaMota == None or erab.helbidea == None:
+        return JsonResponse([{ 'mez':'Ordainketa mota edo helbidea ez dituzu zehaztu.'}], safe=False)
+    
+    
     
     total = 0
     lista=[]
     for e in gureeskaerak:
-        lista.append({'produktua':e.produktua.izena, 'kopurua':e.kopurua, 'prezioa': (float(e.produktua.prezioa) * float(e.kopurua))})
+        lista.append({'produktua':e.produktua.izena, 'kopurua':e.kopurua, 'prezioa':round((float(e.produktua.prezioa) * float(e.kopurua)), 2) })
         total += (float(e.produktua.prezioa) * float(e.kopurua))
         
         
-    return JsonResponse([{ 'izena':erab.izena, 'total':total,'eguna':date.today(), 'lista':lista}], safe=False)
+    if total >= 80:
+        myeskaera.egoera = 2
+        myeskaera.save()
+        for e in gureeskaerak:
+            prod = Produktua.objects.get(id = e.produktua.id)
+            prod.stock -= e.kopurua
+            prod.save()
+        return JsonResponse([{'mez':'', 'izena':erab.izena, 'total':total,'eguna':date.today(), 'lista':lista}], safe=False)
+    else:
+        return JsonResponse([{ 'mez':'Prezio minimoa 80€-koa da'}], safe=False)
+
+@csrf_exempt
+def ordainketamota(request):
+    mota = request.POST['mota']
+    erab = Erabiltzailea.objects.get(erabitlzailea_id = request.user)
+    erab.ordainketaMota = mota
+    erab.save()
+    return JsonResponse([{'mez':'ondo'}], safe=False)

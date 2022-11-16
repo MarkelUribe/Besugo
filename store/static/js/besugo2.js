@@ -113,7 +113,48 @@
       //totaljaso();
   });
 
+  $("#btnComprar").click(function (e) {
+      let json = {};
+      let csrftoken = "{{csrf_token}}";
+      $.ajax({
+        type: 'POST',
+        headers: { 'X-CSRFToken': csrftoken },
+        url:  "/ordainketaegin/",
+        data: json,
+        dataType: 'json',
+        success: function (data) {
+          if (data[0].mez !== ""){
+            alert(data[0].mez);
+          }else{
+            pdf(data);
+            window.location.href = '/index';
+          }
+        }, error: function(e){
+          alert("errorea: " + e);
+          console.log(e);
+        }
+      });
   });
 
+
+
+  });
+
+  function pdf(data){
+    if (confirm('Eskaera egin da!, Faktura gorde nahi duzu?')) {
+      var doc = new jsPDF();
+      let text = "";
+      text += 'Faktura '+data[0].eguna +" \r\n ";
+      text += data[0].izena +" \r\n \r\n ";
+      for (let i = 0; i < data[0].lista.length; i++) {
+        text += data[0].lista[i].produktua + " | Unitateak: " + data[0].lista[i].kopurua + " | " + data[0].lista[i].prezioa+"€ \r\n ";
+      }
+      text += '\r\n Guztira: '+data[0].total+"€";
+      console.log(text);
+      doc.text(text, 10, 10);
+      doc.save('faktura'+data[0].eguna+'.pdf');
+    }
+    
+  }
  
 })(jQuery);
