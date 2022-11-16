@@ -454,3 +454,90 @@ form{
     font-family: 'Arial';
 }
 
+#karritokutxa{
+    background: var(--light);
+    height: 80vh;
+    width: 70%;
+    max-width: 1100px;
+    min-width: 500px;
+    padding: 20px;
+}
+
+#karritoproduktuakkutxa{
+    width: 95%;
+    background: var(--light);
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.karritoproduktuaklinea{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    color: black;
+    font-weight: 200;
+    font-size: larger;
+    margin: 5px;
+}
+
+.karritoproduktuaklinea p{
+    margin-top: 9px;
+    margin-bottom: 4px;
+}
+
+.karritoabotoiak{
+    display: flex;
+    justify-content: right;
+}
+
+.karritoabotoiak img{
+    height: 35px;
+    width: 35px;
+}
+
+.karritoabotoiak button{
+    border: none; 
+    background: white;
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+
+.karritoabotoiak input{
+    width: 47px;
+}
+
+.karritoproduktuaklineamarisko{
+    display: flex;
+    justify-content: left;
+    color: black;
+    font-weight: 100;
+    font-size: small;
+}
+
+.datuakkutxa{
+    width: 450px;
+    border: solid;
+    border-color:black;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+}
+
+.datuakkutxa img{
+    width: 35px; 
+    float: right;
+}
+.btnComprar{
+    height: 80px;
+    width: 210px;
+    font-family: Arial;
+    color: var(--secondary);
+    background: var(--dark);
+    border-color: var(--secondary);
+    font-size: 30px;
+    border-radius:10px;
+}
+
+.karritodatuak{
+    
+}
