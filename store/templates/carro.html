@@ -53,7 +53,7 @@
          <div class="container-fluid page-header" id="karritokutxa">
             <div id="karritoproduktuakkutxa">
                <div id="prodktuak">
-                  <h2 style="margin-top:20px;margin-right:550px">PLATOS</h2>
+                  <h2 style="margin-top:20px;margin-right:550px">PLATERAK</h2>
                   {% for x in myprodu %}
                   {% if x.mota == 1 %}
                   <div class="karritoproduktuaklinea">
@@ -87,7 +87,7 @@
                </div>
                <div >
                   <div style="display:flex;margin:auto">
-                     <h2 style="margin-top:20px;margin-right :50px">MARISCADA</h2>
+                     <h2 style="margin-top:20px;margin-right :50px">MARISKADA</h2>
                      <a href="{% url 'mariscadascarro' %}">
                      <img
                         style="height: 20px;"
@@ -109,7 +109,7 @@
                   {% endfor %}
                </div>
                <div id="bebidas">
-                  <h2 style="margin-top:20px;margin-right:550px">BEBIDAS</h2>
+                  <h2 style="margin-top:20px;margin-right:550px">EDARIAK</h2>
                   {% for x in myprodu %}
                   {% if x.mota == 2 %}
                   <div class="karritoproduktuaklinea">
@@ -156,7 +156,7 @@
                   </a>
                </div>
                <div class="datuakkutxa">
-                  <h5 >METODO DE PAGO</h5>
+                  <h5 >ORDAINKETA METODOA</h5>
                   <p>{{ordainketa}}</p>
                   <a href="{% url 'pago' %}">
                   <img
@@ -172,7 +172,7 @@
                   class="btnComprar"
                   class="btn"
                   >
-               <b>PAGAR</b>
+               <b>ORDAINDU</b>
                </button>
             </div>
          </div>

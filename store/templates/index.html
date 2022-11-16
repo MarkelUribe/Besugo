@@ -46,11 +46,11 @@
                     <img class="w-100" src="../static/img/marisco1.jpg" alt="Image" style="height: 50%;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
-                            <h1 class="display-2 text-uppercase text-white mb-md-4">Mariscadas Personalizadas</h1>
+                            <h1 class="display-2 text-uppercase text-white mb-md-4">Mariskada Pertsonalizatuak</h1>
                             {% if request.user.is_authenticated %}
-                            <a href="{% url 'mariscadascarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">No te quedes sin la tuya</a>
+                            <a href="{% url 'mariscadascarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Ez geratu zurea gabe</a>
                             {% else %}
-                            <a href="{% url 'mariscadas' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">No te quedes sin la tuya!</a>
+                            <a href="{% url 'mariscadas' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Ez geratu zurea gabe</a>
                             {% endif %}
                         </div>
                     </div>
@@ -59,11 +59,11 @@
                     <img class="w-100" src="../static/img/plato.jpg" alt="Image" style="height: 40%">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;">
-                            <h1 class="display-2 text-uppercase text-white mb-md-4">Platos de la casa, el sabor del mar</h1>
+                            <h1 class="display-2 text-uppercase text-white mb-md-4">Etxeko platerak, Itsasoa dastatu</h1>
                             {% if request.user.is_authenticated %}
-                            <a href="{% url 'platerak' %}" class="btn btn-primary py-md-3 px-md-5 mt-2" style="margin-bottom: 150px">Comenzar a pedir</a>
+                            <a href="{% url 'platerak' %}" class="btn btn-primary py-md-3 px-md-5 mt-2" style="margin-bottom: 150px">Eskatzen hasi</a>
                             {% else %}
-                            <a href="{% url 'platoscarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2" style="margin-bottom: 150px">Comenzar a pedir</a>
+                            <a href="{% url 'platoscarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2" style="margin-bottom: 150px">Eskatzen hasi</a>
                             {% endif %}
                         </div>
                     </div>
@@ -72,11 +72,11 @@
                     <img class="w-100" src="../static/img/bebidas.jpg" alt="Image" style="height: 50%;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 800px;margin-top:80px">
-                            <h1 class="display-2 text-uppercase text-white mb-md-4">Las mejores botellas de vino</h1>
+                            <h1 class="display-2 text-uppercase text-white mb-md-4">Ardo botila onenak</h1>
                             {% if request.user.is_authenticated %}
-                            <a href="{% url 'bebidas' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Ver bebidas</a>
+                            <a href="{% url 'bebidas' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Edariak ikusi</a>
                             {% else %}
-                            <a href="{% url 'bebidascarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Ver bebidas</a>
+                            <a href="{% url 'bebidascarro' %}" class="btn btn-primary py-md-3 px-md-5 mt-2">Edariak ikusi</a>
                             {% endif %}
                         </div>
                     </div>
