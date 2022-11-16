@@ -95,7 +95,7 @@
         data: json,
         dataType: 'json',
         success: function (data) {
-          //alert(data[0].mezua);
+          totaljaso();
         }, error: function(e){
           alert("errorea: " + e);
           console.log(e);
@@ -103,7 +103,7 @@
       });
 
       $(this).parent().parent().remove();
-      totaljaso();
+      
     });
 
     $(".contador").on("input", function(){
@@ -115,9 +115,5 @@
 
   });
 
-  $("#basu").click(function (e) {
-    e.preventDefault();
-    document.getElementById("#dire").textContent = "";
-  });
  
 })(jQuery);
