@@ -41,7 +41,9 @@
                     <div class="bg-white text-center p-5" id="formdiv">
                         
                         <form id="log" method="POST" action="/hasisaioa/">
-                            
+                            {% if mez != "" %}
+                            <h6 style="color:red;">{{mez}}</h6>
+                            {% endif %}
                             <legend>Hasi saioa</legend>
                                 <div class="col-12 col-sm-6">
                                     <input type="text" class="form-control bg-light border-0" placeholder="Izena" name="izena" style="height: 55px;">

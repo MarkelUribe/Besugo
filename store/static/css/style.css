@@ -154,8 +154,10 @@ body{
     height: 850px;
 }
 .carousel-item img{
-    min-height: 100vh !important;
+    min-width: 100vh;
+    min-height: 100vh;
 }
+
 
 @media (max-width: 570px) {
     .carousel-caption h4 {
@@ -420,14 +422,23 @@ form{
 }
 
 #btnComprar{
-    height: 50px;
-    width: 160px;
+    height: 62px;
+    width: 208px;
     font-family: besugo;
     color: var(--dark);
     font-family: 'besugo';
     background: var(--primary);
     border-color: var(--secondary);
-    font-size: 24px;
+    font-size: xx-large;
+    font-weight: 200;
+    transition: 0.5s;
+}
+
+#btnComprar:hover{
+    color: var(--primary);
+    background: var(--dark);
+    border-color: var(--dark);
+
 }
 
 #bsg{
@@ -538,6 +549,17 @@ form{
     border-radius:10px;
 }
 
-.payment{
-
+#pay{
+    padding: 5px;
 }
+
+.carfont a{
+    font-size: xx-large;
+    font-weight: 100;
+}
+
+#total{
+    font-size: xxx-large;
+    color: var(--dark);
+}
+

@@ -53,7 +53,17 @@
          <div class="container-fluid page-header" id="karritokutxa">
             <div id="karritoproduktuakkutxa">
                <div id="prodktuak">
-                  <h2 style="margin-top:20px;margin-right:550px">PLATERAK</h2>
+                  <div style="display:flex;margin:auto;margin-bottom:15px;">
+                  <h2 style="margin-right:30px">PLATERAK</h2>
+                  <a href="{% url 'platoscarro' %}">
+                     <img
+                        style="height: 20px;"
+                        src="../static/img/editar.jpg"
+                        onmouseover="this.src='../static/img/lapiz.png'"
+                        onmouseout="this.src='../static/img/editar.jpg'"
+                        />
+                     </a>
+                     </div>
                   {% for x in myprodu %}
                   {% if x.mota == 1 %}
                   <div class="karritoproduktuaklinea">
@@ -86,8 +96,8 @@
                   {% endfor %}
                </div>
                <div >
-                  <div style="display:flex;margin:auto">
-                     <h2 style="margin-top:20px;margin-right :50px">MARISKADA</h2>
+                  <div style="display:flex;margin:auto;margin-bottom:15px;">
+                     <h2 style="margin-right :30px">MARISKADA</h2>
                      <a href="{% url 'mariscadascarro' %}">
                      <img
                         style="height: 20px;"
@@ -109,7 +119,17 @@
                   {% endfor %}
                </div>
                <div id="bebidas">
-                  <h2 style="margin-top:20px;margin-right:550px">EDARIAK</h2>
+                  <div style="display:flex;margin:auto;margin-bottom:15px;">
+                  <h2 style="margin-right:30px">EDARIAK</h2>
+                  <a href="{% url 'bebidascarro' %}">
+                     <img
+                        style="height: 20px;"
+                        src="../static/img/editar.jpg"
+                        onmouseover="this.src='../static/img/lapiz.png'"
+                        onmouseout="this.src='../static/img/editar.jpg'"
+                        />
+                     </a>
+                     </div>
                   {% for x in myprodu %}
                   {% if x.mota == 2 %}
                   <div class="karritoproduktuaklinea">
@@ -166,18 +186,19 @@
                      />
                   </a>
                </div>
-               <h3 id="total"></h3>
-               <button
-                  id="btnComprar"
-                  class="btnComprar"
-                  class="btn"
-                  >
-               <b>ORDAINDU</b>
-               </button>
+               <div>
+                  <h3 id="total"></h3>
+                  <button
+                     id="btnComprar"
+                     class="btnComprar"
+                     class="btn">
+                  <b>ORDAINDU</b>
+                  </button>
+               </div>
             </div>
          </div>
       </div>
-      </div>
+      
       <!-- Page Header Start -->
       {% block javascript %}
       <!-- JavaScript Libraries -->

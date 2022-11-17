@@ -18,15 +18,25 @@ from datetime import datetime
 
 
 def index(request):
+    if request.method == 'GET' and 'mez' in request.GET:
+        mez = request.GET['mez']
+    else:
+        mez = ""
     template = loader.get_template('index.html')
     context = {
+        'mez': mez
     }
     return HttpResponse(template.render(context, request))
 
 
 def login(request):
+    if request.method == 'GET' and 'mez' in request.GET:
+        mez = request.GET['mez']
+    else:
+        mez = ""
     template = loader.get_template('login.html')
     context = {
+        'mez': mez
     }
     return HttpResponse(template.render(context, request))
 
@@ -80,8 +90,13 @@ def mariscadas(request):
 
 
 def register(request):
+    if request.method == 'GET' and 'mez' in request.GET:
+        mez = request.GET['mez']
+    else:
+        mez = ""
     template = loader.get_template('register.html')
     context = {
+        'mez': mez
     }
     return HttpResponse(template.render(context, request))
 
@@ -101,7 +116,7 @@ def createuser(request):
             erab.save()
             return HttpResponseRedirect(reverse('index'))
         else:
-            return redirect("/register")
+            return redirect("/register?mez=Pasahitzak ez dira berdinak")
 
 
 @csrf_exempt
@@ -116,7 +131,7 @@ def hasisaioa(request):
             return redirect('/')
         else:
             messages.error(request, "Invalid username or password.")
-            return redirect('/')
+            return redirect('/login?mez=erabiltzailea edo pasahitza okerrak dira')
 
 
 def amaitusaioa(request):
@@ -140,7 +155,6 @@ def mariscadascarro(request):
 
         eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
         eskaera.save()
-        print("sortuta")
         template = loader.get_template('mariscadas.html')
         context = {
             'erabiltzailea': myerabiltzaile,
@@ -149,7 +163,6 @@ def mariscadascarro(request):
         }
         return HttpResponse(template.render(context, request))
     else:
-        print("Ez da sortu")
         myprodu = Produktua.objects.all().values()
         template = loader.get_template('mariscadas.html')
         context = {
@@ -174,7 +187,6 @@ def platoscarro(request):
 
       eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
       eskaera.save()
-      print("sortuta")
       template = loader.get_template('platerak.html')
       context = {
             'mykarroa': eskaera,
@@ -182,7 +194,6 @@ def platoscarro(request):
         }
       return HttpResponse(template.render(context, request))
   else:
-      print("Ez da sortu")
       myprodu = Produktua.objects.all().values()
       template = loader.get_template('platerak.html')
       context = {
@@ -207,7 +218,6 @@ def bebidascarro(request):
 
       eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
       eskaera.save()
-      print("sortuta")
       template = loader.get_template('bebidas.html')
       context = {
             'mykarroa': eskaera,
@@ -215,7 +225,6 @@ def bebidascarro(request):
         }
       return HttpResponse(template.render(context, request))
   else:
-      print("Ez da sortu")
       myprodu = Produktua.objects.all().values()
       template = loader.get_template('bebidas.html')
       context = {
@@ -233,41 +242,39 @@ def updatecarro(request):
     myprodu = Produktua.objects.get(id=idProd)
 
         
-    print("updatecarro funtziao")
     if funtz == 'gei':
+        if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
+            eskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
+            eskaeralerroa.save()
+            #return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
+        
         if cont<myprodu.stock:    
-            print("stocka dago")
-            if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
-                eskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
-                eskaeralerroa.save()
-                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
-
-            else:
-                myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
-                myeskaeralerroa.kopurua=cont
-                myeskaeralerroa.save()
-                print("eguneratu da kop: "+str(cont))
-                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
+            myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
+            myeskaeralerroa.kopurua=cont
+            myeskaeralerroa.save()
+            return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
 
         else:
+            myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
+            myeskaeralerroa.kopurua=myeskaeralerroa.produktua.stock
+            myeskaeralerroa.save()
             return totalaitzuli(request, myeskaera, myprodu, "Ez dago stock-ik")
 
     elif funtz == 'ken':
-        if cont-1<myprodu.stock:    
-            print("stocka dago")
-            if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
-                myeskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
-                myeskaeralerroa.save()
-                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
-
-            else:
-                myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
-                myeskaeralerroa.kopurua=cont
-                myeskaeralerroa.save()
-                print("eguneratu da kop: "+str(cont))
-                return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
-
+        if EskaeraLerroa.objects.filter(eskaera=myeskaera,produktua=myprodu).count() == 0:
+            myeskaeralerroa = EskaeraLerroa(eskaera=myeskaera,produktua=myprodu, kopurua=1)
+            myeskaeralerroa.save()
+            #return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
+            
+        if cont-1<myprodu.stock:
+            myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
+            myeskaeralerroa.kopurua=cont
+            myeskaeralerroa.save()
+            return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa eguneratu da")
         else:
+            myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
+            myeskaeralerroa.kopurua=myeskaeralerroa.produktua.stock
+            myeskaeralerroa.save()
             return totalaitzuli(request, myeskaera, myprodu, "Ez dago stock-ik")
     elif funtz == 'hasi':
         return totalaitzuli(request, myeskaera, myprodu, "hasiera")
@@ -301,7 +308,6 @@ def mariscadascarro(request):
 
         eskaera = Eskaera(data=x, egoera=y, erabiltzailea=j)
         eskaera.save()
-        print("sortuta")
         template = loader.get_template('mariscadas.html')
         context = {
             'mykarroa': eskaera,
@@ -309,7 +315,6 @@ def mariscadascarro(request):
         }
         return HttpResponse(template.render(context, request))
     else:
-        print("Ez da sortu")
         myprodu = Produktua.objects.all().values()
         template = loader.get_template('mariscadas.html')
         context = {
@@ -338,9 +343,13 @@ def carro(request):
     
     itzuli = []
     for i in eskaeralerroak:
-        produktua = Produktua.objects.get(id = i.produktua.id)
-        
-        itzuli.append({'izena': produktua.izena, 'mota': produktua.mota,'kopurua': i.kopurua, 'prezioa': produktua.prezioa, 'id': produktua.id,})
+        if i.kopurua == 0:
+            i.delete()
+        else:
+            
+            produktua = Produktua.objects.get(id = i.produktua.id)
+            
+            itzuli.append({'izena': produktua.izena, 'mota': produktua.mota,'kopurua': i.kopurua, 'prezioa': produktua.prezioa, 'id': produktua.id,})
     
     
     context = {
@@ -423,12 +432,13 @@ def ordainketaegin(request):
         
         
     if total >= 80:
+        print("erosi")
         myeskaera.egoera = 2
         myeskaera.save()
         for e in gureeskaerak:
-            prod = Produktua.objects.get(id = e.produktua.id)
-            prod.stock -= e.kopurua
-            prod.save()
+            print('stock '+ str(e.produktua.stock - e.kopurua))
+            Produktua.objects.filter(id = e.produktua.id).update(stock = e.produktua.stock - e.kopurua)
+            
         return JsonResponse([{'mez':'', 'izena':erab.izena, 'total':total,'eguna':date.today(), 'lista':lista}], safe=False)
     else:
         return JsonResponse([{ 'mez':'Prezio minimoa 80€-koa da'}], safe=False)

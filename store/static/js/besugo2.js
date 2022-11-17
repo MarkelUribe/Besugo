@@ -43,7 +43,7 @@
           }
           if(data[0].mezua == "Ez dago stock-ik"){
             alert(data[0].mezua);
-            //$(contador).val("0")
+            $(contador).val(data[0].stock)
           }
           console.log(data)
         }, error: function(e){
