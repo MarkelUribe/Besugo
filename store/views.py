@@ -248,7 +248,7 @@ def updatecarro(request):
             eskaeralerroa.save()
             #return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
         
-        if cont<myprodu.stock:    
+        if cont<=myprodu.stock:    
             myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
             myeskaeralerroa.kopurua=cont
             myeskaeralerroa.save()
@@ -266,7 +266,7 @@ def updatecarro(request):
             myeskaeralerroa.save()
             #return totalaitzuli(request, myeskaera, myprodu, "EskaeraLerroa sortu da")
             
-        if cont-1<myprodu.stock:
+        if cont<=myprodu.stock:
             myeskaeralerroa = EskaeraLerroa.objects.get(eskaera=myeskaera,produktua=myprodu)
             myeskaeralerroa.kopurua=cont
             myeskaeralerroa.save()
